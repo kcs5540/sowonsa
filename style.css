@@ -2319,4 +2319,35 @@ footer {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
+  /* Mobile margin and header occlusion fixes */
+  html, body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .hero-slider,
+  .hero-slide {
+    width: 100% !important;
+    left: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .hero-content {
+    margin-top: 4.5rem !important; /* Pushes the yellow/gold badge down below the fixed header */
+    padding: 0 1.5rem !important;
+  }
+
+  .hero-badge {
+    margin-bottom: 0.75rem !important;
+  }
 }
