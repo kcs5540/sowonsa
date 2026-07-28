@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소원사 미디어 캡션 편집기</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #1e2220;
+      --bg-secondary: #2a2f2c;
+      --text-primary: #e6ede9;
+      --text-secondary: #a3b3ab;
+      --color-primary: #407560;
+      --color-secondary: #d4ab55;
+      --color-accent: #cf6855;
+      --border-color: rgba(230, 237, 233, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+      line-height: 1.6;
+      padding-bottom: 100px;
+    }
+    
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      color: var(--color-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-secondary);
+    }
+    
+    .media-container {
+      width: 100%;
+      height: 200px;
+      background-color: #000;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .media-container img, 
+    .media-container video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    .media-badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .form-container {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+    
+    .filename {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--color-secondary);
+      word-break: break-all;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    
+    label {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--text-secondary);
+    }
+    
+    input[type="text"], 
+    select {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+    
+    input[type="text"]:focus, 
+    select:focus {
+      border-color: var(--color-secondary);
+      outline: none;
+    }
+    
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+    
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+    
+    .btn-save {
+      background-color: var(--color-secondary);
+      color: #fff;
+    }
+    
+    .btn-save:hover {
+      background-color: #e8c272;
+      transform: translateY(-1px);
+    }
+    
+    .btn-home {
+      background-color: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .btn-home:hover {
+      background-color: #57987e;
+    }
+    
+    .toast {
+      position: fixed;
+      top: 5rem;
+      right: 2rem;
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1000;
+      font-weight: bold;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .toast.error {
+      background-color: var(--color-accent);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1><i class="fa-solid fa-images"></i> 소원사 미디어 캡션 편집기</h1>
+      <div class="desc">각 이미지와 동영상을 확인하며 올바른 사진 설명과 카테고리를 설정해 주세요.</div>
+    </div>
+    <a href="/" class="btn btn-home" target="_blank"><i class="fa-solid fa-home"></i> 홈페이지 보기</a>
+  </header>
+
+  <div class="container">
+    <div class="grid" id="editor-grid">
+      <!-- Media Cards will be rendered here -->
+    </div>
+  </div>
+
+  <div class="sticky-bar">
+    <div id="status-text" style="color: var(--text-secondary); font-size: 0.95rem;">
+      총 <span id="total-count" style="font-weight: bold; color: var(--color-secondary);">0</span>개의 미디어가 등록되어 있습니다.
+    </div>
+    <button class="btn btn-save" id="save-btn"><i class="fa-solid fa-save"></i> 변경사항 저장하기</button>
+  </div>
+
+  <div class="toast" id="toast">저장이 완료되었습니다!</div>
+
+  <script src="app.js"></script>
+  <script>
+    // Load and Render the editor content using mediaItems from app.js
+    const grid = document.getElementById('editor-grid');
+    const totalCountSpan = document.getElementById('total-count');
+    const saveBtn = document.getElementById('save-btn');
+    const toast = document.getElementById('toast');
+    
+    // Set total count
+    totalCountSpan.textContent = mediaItems.length;
+    
+    // Render cards
+    mediaItems.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.index = idx;
+      
+      let mediaPreview = '';
+      if (item.type === 'video') {
+        mediaPreview = `<video controls muted preload="metadata"><source src="./images/${item.src}" type="video/mp4"></video>`;
+      } else {
+        mediaPreview = `<img src="./images/${item.src}" alt="${item.title}" loading="lazy">`;
+      }
+      
+      card.innerHTML = `
+        <div class="media-container">
+          ${mediaPreview}
+          <div class="media-badge">${item.type.toUpperCase()}</div>
+        </div>
+        <div class="form-container">
+          <div class="filename">${item.src}</div>
+          
+          <div class="form-group">
+            <label>사진 설명 (캡션)</label>
+            <input type="text" class="caption-input" value="${item.title}" data-index="${idx}">
+          </div>
+          
+          <div class="form-group">
+            <label>카테고리</label>
+            <select class="category-select" data-index="${idx}">
+              <option value="scenery" ${item.category === 'scenery' ? 'selected' : ''}>사찰 풍경</option>
+              <option value="pavilion" ${item.category === 'pavilion' ? 'selected' : ''}>부연정자 건립</option>
+              <option value="video" ${item.category === 'video' ? 'selected' : ''}>동영상</option>
+            </select>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+    
+    // Handle Save Button
+    saveBtn.addEventListener('click', async () => {
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 저장 중...';
+      
+      const inputs = document.querySelectorAll('.caption-input');
+      const selects = document.querySelectorAll('.category-select');
+      
+      const updatedMediaItems = [];
+      
+      inputs.forEach((input, idx) => {
+        const select = selects[idx];
+        const originalItem = mediaItems[idx];
+        
+        updatedMediaItems.push({
+          type: originalItem.type,
+          src: originalItem.src,
+          category: select.value,
+          title: input.value.trim() || originalItem.title
+        });
+      });
+      
+      try {
+        const response = await fetch('/api/save-captions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedMediaItems)
+        });
+        
+        const result = await response.text();
+        if (response.ok) {
+          showToast('성공적으로 저장되었습니다! 홈페이지를 새로고침 해보세요.');
+        } else {
+          showToast('저장 실패: ' + result, true);
+        }
+      } catch (err) {
+        showToast('서버 연결 오류: ' + err.message, true);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<i class="fa-solid fa-save"></i> 변경사항 저장하기';
+      }
+    });
+    
+    function showToast(msg, isError = false) {
+      toast.textContent = msg;
+      if (isError) {
+        toast.classList.add('error');
+      } else {
+        toast.classList.remove('error');
+      }
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
