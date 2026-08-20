@@ -333,8 +333,6 @@ function openLightbox(index) {
     iframe.src = `https://www.youtube.com/embed/${item.src}?autoplay=1`;
     iframe.className = 'lightbox-video';
     iframe.style.border = '0';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     iframe.setAttribute('allowfullscreen', 'true');
     mediaContainer.appendChild(iframe);
