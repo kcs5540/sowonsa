@@ -257,9 +257,14 @@ function renderGallery() {
     }
     
     card.innerHTML = `
-      ${mediaHtml}
-      <div class="gallery-item-overlay">
-        <span class="gallery-item-icon"><i class="fas ${iconClass}"></i></span>
+      <div class="gallery-media-wrapper">
+        ${mediaHtml}
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-icon"><i class="fas ${iconClass}"></i></span>
+        </div>
+      </div>
+      <div class="gallery-item-caption">
+        ${item.title}
       </div>
     `;
     
