@@ -1,5 +1,6 @@
 // Media Database
 const mediaItems = [
+  { type: 'youtube', src: 'KfbxbXhMCRg', category: 'video', title: '제주 소원사, 천년의 노래' },
   { type: 'image', src: '260820-01.jpg', category: 'scenery', title: '황금 포대화상과 현대식 법당 전경' },
   { type: 'image', src: '260820-02.jpg', category: 'scenery', title: '포대화상 주변의 참배 쉼터와 사찰 전경' },
   { type: 'image', src: '260820-03.jpg', category: 'scenery', title: '소원사 범종각과 석가탑 불사 안내대' },
