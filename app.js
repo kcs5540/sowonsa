@@ -526,3 +526,44 @@ function initConsultations() {
   handleFormSubmit('consultation-form');
   handleFormSubmit('modal-consultation-form');
 }
+
+// 10. Dual-track Enshrines & Yesu-jae Tab Switcher
+window.switchEnshrineTab = function(tabId) {
+  const triggers = document.querySelectorAll('.tab-trigger');
+  const panels = document.querySelectorAll('.tab-panel');
+  
+  triggers.forEach(trigger => trigger.classList.remove('active'));
+  panels.forEach(panel => panel.classList.remove('active'));
+  
+  const activePanel = document.getElementById(tabId);
+  if (activePanel) {
+    activePanel.classList.add('active');
+  }
+  
+  let triggerId = '';
+  if (tabId === 'tab-enshrine') {
+    triggerId = 'trigger-enshrine';
+  } else if (tabId === 'tab-yesujae') {
+    triggerId = 'trigger-yesujae';
+  }
+  
+  const activeTrigger = document.getElementById(triggerId);
+  if (activeTrigger) {
+    activeTrigger.classList.add('active');
+  }
+
+  // Smooth scroll to tab section
+  const tabContainer = document.querySelector('.enshrine-tabs-container');
+  if (tabContainer) {
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 80;
+    const elementPosition = tabContainer.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerHeight - 20;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+};
+
