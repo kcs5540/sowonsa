@@ -1,0 +1,41 @@
+# Local server & credentials
+local-server.js
+consultations.json
+chrome-profile/
+사업자등록증명.jpg
+
+# Temp logs & parse scripts
+parsed_blog1.txt
+parsed_blog2.txt
+제주 소원사 자료모음.txt
+parse.js
+parse.py
+generate-image-list.js
+
+# Large media & documents (Vrew, Videos, PDFs, Brochures, Pamphlets)
+*.mp4
+*.vrew
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.zip
+
+# Root directory images and brochures (ignoring root images to protect private ones)
+/*.jpg
+/*.png
+/*.jpeg
+/*.gif
+
+# Allow website images in the images folder
+!/images/
+!/images/**
+
+# Ignore IDE / scratch files
+walkthrough.md
+task.md
+implementation_plan.md
+github_desktop_guide.md
+scratch/
+.idea/
+.vscode/
