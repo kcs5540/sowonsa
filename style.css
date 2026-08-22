@@ -1863,11 +1863,24 @@ section {
 .action-btn.secondary {
   background-color: var(--bg-tertiary);
   color: var(--text-primary);
+  border-color: var(--border-color);
 }
 
 .action-btn.secondary:hover {
   background-color: var(--border-color);
   transform: translateY(-2px);
+}
+
+[data-theme="dark"] .action-btn.secondary {
+  background-color: #122a24;
+  color: #FAF6F0;
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+[data-theme="dark"] .action-btn.secondary:hover {
+  background-color: #193a31;
+  border-color: var(--color-secondary);
+  color: #ffffff;
 }
 
 .map-container {
