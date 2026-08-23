@@ -2306,6 +2306,83 @@ footer {
     padding: 1.5rem;
   }
   
+  /* 모바일 일정표 카드형 전환 */
+  .calendar-table-wrapper {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .calendar-table, 
+  .calendar-table thead, 
+  .calendar-table tbody, 
+  .calendar-table th, 
+  .calendar-table td, 
+  .calendar-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .calendar-table thead {
+    display: none; /* 헤더 감추기 */
+  }
+
+  .calendar-table tbody tr {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .calendar-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .calendar-table td {
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed rgba(212, 175, 55, 0.15);
+    text-align: left;
+    position: relative;
+    padding-left: 85px; /* 라벨용 여백 */
+    font-size: 0.9rem;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+  }
+
+  .calendar-table td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* 첫 번째 셀 (법회/기도명) 스타일링 - 제목 역할 */
+  .calendar-table td:first-child {
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0; /* 제목은 라벨 없이 전체 너비 사용 */
+    display: block;
+  }
+
+  .calendar-table td:first-child::before {
+    display: none;
+  }
+
+  /* 각 셀의 라벨 표시 */
+  .calendar-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 75px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+  
   .consult-modal-dialog {
     padding: 2.2rem 1.5rem;
     width: 92%;
