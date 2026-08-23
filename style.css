@@ -2774,13 +2774,25 @@ footer {
     gap: 1.5rem;
   }
   .flow-arrow {
-    transform: rotate(90deg);
+    transform: none;
     min-width: auto;
-    margin: 0.5rem 0;
+    margin: 1.5rem 0;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  @keyframes pulseArrow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
+  .flow-arrow i {
+    transform: rotate(90deg);
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    animation: pulseArrowMobile 2s infinite;
+  }
+  .flow-arrow span {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  @keyframes pulseArrowMobile {
+    0%, 100% { transform: translateY(0) rotate(90deg); }
+    50% { transform: translateY(6px) rotate(90deg); }
   }
 }
 
