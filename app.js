@@ -167,7 +167,7 @@ function initMobileMenu() {
 function initHeroSlider() {
   const slider = document.getElementById('hero-slider');
   const slideImages = [
-    '20260719_135118.jpg', // Temple Scenery
+    'og_thumbnail.jpg', // Temple Balcony with Golden Railing (New Hero background)
     '20260719_141517.jpg', // Pavilion with Hallasan
     '20260719_135127.jpg'  // Main Hall
   ];
