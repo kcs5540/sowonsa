@@ -2469,6 +2469,45 @@ footer {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
   }
+
+  /* 창건 이야기 모바일 레이아웃 최적화 */
+  .story-timeline::after {
+    left: 1.25rem; /* 타임라인 선을 왼쪽으로 이동 */
+  }
+  
+  .story-node {
+    padding-left: 2.5rem !important; /* 타임라인 여백 최소화 */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .story-node-left .story-badge,
+  .story-node-right .story-badge {
+    left: 1.25rem !important; /* 타임라인 점 위치 맞춤 */
+  }
+  
+  .story-card {
+    padding: 1.5rem !important; /* 카드 내부 여백 40px -> 24px 대폭 축소 */
+    border-radius: 20px;
+  }
+  
+  .story-card h4 {
+    font-size: 1.15rem !important; /* 제목 글자 크기 축소 */
+    margin-bottom: 0.75rem;
+    line-height: 1.45;
+  }
+  
+  .story-card p {
+    font-size: 0.9rem !important; /* 본문 글자 크기 축소 */
+    line-height: 1.6;
+  }
+  
+  .story-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /* Dual-track Enshrines & Yesu-jae Section */
