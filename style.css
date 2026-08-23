@@ -890,11 +890,35 @@ section {
   text-align: right;
 }
 
+.story-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.story-node-left .story-card-header {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.story-node-right .story-card-header {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .story-icon {
   font-size: 1.75rem;
   color: var(--color-secondary);
-  margin-bottom: 0.75rem;
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.story-card-header h4 {
+  margin: 0;
+  line-height: 1.35;
 }
 
 .story-img {
@@ -2269,6 +2293,11 @@ footer {
     padding-left: 1rem;
     padding-right: 0;
     text-align: left;
+  }
+
+  .story-node-left .story-card-header {
+    flex-direction: row;
+    justify-content: flex-start;
   }
 }
 
