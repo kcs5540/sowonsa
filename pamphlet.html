@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제주 소원사 홍보 팜플렛 시안</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark-zen: #081C17;
+      --color-secondary: #D4AF37;
+      --bg-light-paper: #FAF6F0;
+      --text-dark: #081C17;
+      --text-light: #FAF6F0;
+      --border-gold: rgba(212, 175, 55, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #2b302c;
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 40px 20px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 컨트롤러 (인쇄 시 숨김) */
+    .controls {
+      background-color: #1b211d;
+      padding: 15px 30px;
+      border-radius: 50px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      border-radius: 30px;
+      border: 1px solid var(--color-secondary);
+      background-color: transparent;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover, .btn.active {
+      background-color: var(--color-secondary);
+      color: var(--bg-dark-zen);
+    }
+
+    .btn-print {
+      background-color: #d9534f;
+      border-color: #d9534f;
+    }
+    .btn-print:hover {
+      background-color: #c9302c;
+      border-color: #ac2925;
+      color: #fff;
+    }
+
+    /* 팜플렛 컨테이너 */
+    .brochure-container {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      width: 100%;
+      max-width: 1120px; /* A4 가로 비율 최적화 */
+    }
+
+    .brochure-spread {
+      background-color: var(--bg-light-paper);
+      width: 1120px;
+      height: 792px; /* 가로 297mm x 세로 210mm 비율 */
+      border-radius: 12px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s ease;
+      transform-origin: top center;
+    }
+
+    /* 접지선 표시 */
+    .brochure-spread::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 33.333%;
+      width: 1px;
+      height: 100%;
+      border-left: 1px dashed rgba(212, 175, 55, 0.25);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .brochure-spread::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 66.666%;
+      width: 1px;
+      height: 100%;
+      border-left: 1px dashed rgba(212, 175, 55, 0.25);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* 페이지 개별 스타일 */
+    .page {
+      padding: 45px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      height: 100%;
+      word-break: keep-all;
+    }
+
+    /* 외면 (짙은 청록색 커버 테마) */
+    .spread-outside {
+      background-color: var(--bg-dark-zen);
+      color: var(--text-light);
+    }
+
+    /* 전통적인 테두리 장식 */
+    .page-border {
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      border: 1px solid var(--border-gold);
+      pointer-events: none;
+    }
+
+    /* 타이틀 및 폰트 */
+    .serif {
+      font-family: 'Noto Serif KR', serif;
+    }
+
+    /* 각 페이지 세부 레이아웃 */
+    
+    /* 1면: 앞표지 */
+    .page-cover {
+      text-align: center;
+      justify-content: center;
+      gap: 25px;
+    }
+    .cover-icon {
+      font-size: 3rem;
+      color: var(--color-secondary);
+      margin-bottom: 10px;
+    }
+    .cover-title-main {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--color-secondary);
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+    .cover-subtitle {
+      font-size: 0.95rem;
+      color: #90AFA7;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .cover-footer {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      letter-spacing: 0.2em;
+      font-weight: 700;
+    }
+
+    /* 6면: 뒷표지 (안내 정보) */
+    .page-info {
+      justify-content: space-between;
+    }
+    .info-header h3 {
+      font-size: 1.5rem;
+      color: var(--color-secondary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .info-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .info-item i {
+      color: var(--color-secondary);
+      font-size: 1.1rem;
+      margin-top: 3px;
+    }
+    .info-footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #90AFA7;
+      border-top: 1px dashed var(--border-gold);
+      padding-top: 15px;
+    }
+
+    /* 2면: 안쪽 날개 (경쟁력) */
+    .page-wing {
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .wing-title {
+      font-size: 1.4rem;
+      color: var(--color-secondary);
+      margin-bottom: 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border-gold);
+      padding-bottom: 12px;
+    }
+    .wing-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      margin-top: 25px;
+      margin-bottom: 5px;
+    }
+    .wing-item {
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border-gold);
+    }
+    .wing-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .wing-item h5 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wing-item p {
+      font-size: 0.82rem;
+      color: #C0D2CD;
+      line-height: 1.65;
+    }
+
+    /* 내면 (밝은 미색 한지 테마) */
+    .spread-inside {
+      background-color: var(--bg-light-paper);
+      color: var(--text-dark);
+    }
+    .spread-inside .page-border {
+      border-color: rgba(8, 28, 23, 0.15);
+    }
+
+    .inside-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--bg-dark-zen);
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 1px solid rgba(8, 28, 23, 0.15);
+      padding-bottom: 8px;
+    }
+    .inside-subtitle {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #555;
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .content-box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .content-item h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--bg-dark-zen);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content-item h5 i {
+      color: var(--color-secondary);
+    }
+    .content-item p {
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.6;
+      padding-left: 18px;
+    }
+
+    /* 4면: 가운데 연계 흐름도 전용 */
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+    }
+    .flow-card {
+      background-color: rgba(8, 28, 23, 0.05);
+      border: 1px solid rgba(8, 28, 23, 0.1);
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+    }
+    .flow-card h6 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--bg-dark-zen);
+      margin-bottom: 2px;
+    }
+    .flow-card p {
+      font-size: 0.75rem;
+      color: #555;
+      line-height: 1.4;
+    }
+    .flow-arrow-icon {
+      font-size: 1rem;
+      color: var(--color-secondary);
+      margin: 1px 0;
+    }
+
+    /* 위패 실물 이미지 및 캡션 */
+    .wipae-img-wrapper {
+      margin: 5px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 240px;
+      width: 240px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .wipae-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .wipae-caption {
+      font-size: 0.72rem;
+      color: #555;
+      text-align: center;
+      margin-top: 1px;
+      font-weight: bold;
+    }
+
+    /* 생전예수재 10대 공덕 grid */
+    .merits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 8px;
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .merits-title-wrapper {
+      grid-column: span 2;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 2px;
+      margin-bottom: 2px;
+    }
+    .merits-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--bg-dark-zen);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .merit-item {
+      font-size: 0.7rem;
+      color: #333;
+      line-height: 1.3;
+      display: flex;
+      gap: 3px;
+    }
+    .merit-num {
+      color: var(--color-secondary);
+      font-weight: bold;
+    }
+
+    /* 반려동물 천도재 안내 카드 */
+    .pet-card {
+      margin-top: 15px;
+      background-color: rgba(212, 175, 55, 0.08);
+      border: 1px dashed var(--color-secondary);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pet-card i {
+      color: var(--color-secondary);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .pet-card h6 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bg-dark-zen);
+      margin-bottom: 2px;
+    }
+    .pet-card p {
+      font-size: 0.72rem;
+      color: #555;
+      line-height: 1.35;
+    }
+
+    /* 화면 인쇄 가이드라인 */
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+    @media print {
+      body {
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+      }
+      .controls {
+        display: none !important;
+      }
+      .brochure-container {
+        gap: 0;
+      }
+      .brochure-spread {
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: always;
+        width: 297mm;
+        height: 210mm;
+        transform: none !important;
+      }
+      /* 접지선 인쇄 안 됨 */
+      .brochure-spread::after, .brochure-spread::before {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 컨트롤 가이드 -->
+  <div class="controls">
+    <a href="index.html" class="btn" style="text-decoration: none; background: rgba(255,255,255,0.08);"><i class="fa-solid fa-house"></i> 소원사 홈페이지 홈</a>
+    <button class="btn active" id="btn-show-all" onclick="filterSpread('all')"><i class="fa-solid fa-eye"></i> 전체 보기</button>
+    <button class="btn" id="btn-show-outside" onclick="filterSpread('outside')"><i class="fa-solid fa-folder"></i> 팜플렛 바깥쪽 (외면)</button>
+    <button class="btn" id="btn-show-inside" onclick="filterSpread('inside')"><i class="fa-solid fa-folder-open"></i> 팜플렛 안쪽 (내면)</button>
+    <button class="btn btn-print" onclick="window.print()"><i class="fa-solid fa-print"></i> PDF 저장 및 인쇄</button>
+  </div>
+
+  <!-- 팜플렛 컨테이너 -->
+  <div class="brochure-container" id="brochure">
+
+    <!-- 1. 바깥쪽 지면 (외면) -->
+    <div class="brochure-spread spread-outside" id="spread-outside-view">
+      
+      <!-- [왼쪽 면] 2면: 안쪽 날개 (소원사 경쟁력) -->
+      <div class="page page-wing">
+        <div class="page-border"></div>
+        <h4 class="serif wing-title">소원사 평생 안심 보장</h4>
+        <div class="wing-list">
+          <div class="wing-item">
+            <h5>[상품 1] 생전 예수재 (연계형)</h5>
+            <p><strong>대상: 살아계신 본인 및 가족 (금장 생패 봉안)</strong><br>생전에 빚을 갚고 공덕을 닦는 예수재를 올리며, 임종 후 추가 비용 없이 사후 영가 위패봉안으로 자동 연계/승계되는 평생 보장 프로그램입니다.</p>
+          </div>
+          <div class="wing-item">
+            <h5>[상품 2] 영가 위패봉안 (독립형)</h5>
+            <p><strong>대상: 작고하신 부모/조상 영가 (흑칠 망패 봉안)</strong><br>돌아가신 영가님들을 청정 위패전에 즉시 안치하고, 스님의 매일 예불과 연 15회 제례로 대를 이어 정성껏 극락왕생을 추모합니다. (잔여 1,000기 한정)</p>
+          </div>
+          <div class="wing-item">
+            <h5>[특별 제례] 반려동물(인연영가) 천도재</h5>
+            <p><strong>대상: 무지개다리를 건넌 소중한 반려동물</strong><br>가족으로 함께하며 위로를 주었던 인연의 넋을 기리고, 부처님의 자비 속에서 더 좋은 인연으로 환생(극락왕생)하도록 스님이 정성을 다해 49재 및 맞춤 천도재를 봉행합니다.</p>
+          </div>
+          <div class="wing-item">
+            <h5>※ 소원사의 약속</h5>
+            <p>365일 매일 예불 축원, 연 15회 이상의 체계적인 합동 제사 및 기일 단독 제사 대행, 훼손 걱정 없는 최첨단 항온·항습 청정 위패전에서 대를 이어 모십니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- [가운데 면] 6면: 뒷표지 (사찰 정보 및 약도) -->
+      <div class="page page-info">
+        <div class="page-border"></div>
+        <div class="info-header">
+          <h3 class="serif">제주 소원사 안내</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>도로명 주소</strong><br>
+                제주특별자치도 제주시 죽성서길 75
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-map-pin"></i>
+              <div>
+                <strong>지번 주소</strong><br>
+                제주특별자치도 제주시 오등동 935
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>상담 및 신청 문의</strong><br>
+                안내 법사님 : 010-5557-0267
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-circle-info"></i>
+              <div>
+                <strong>사찰 특징</strong><br>
+                한라산 자락 도심 근교 위치 (공항 15분 거리)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 사찰 대웅전(큰법당) 및 도량 전경 이미지 -->
+        <div style="margin: 15px auto 5px auto; width: 100%; height: 165px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+          <img src="./images/sowonsa_main_hall.jpg" alt="소원사 대웅전(큰법당) 및 도량 전경" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <p style="font-size: 0.72rem; color: #90AFA7; text-align: center; margin-bottom: 8px;">소원사 도량 및 대웅전(큰법당) 전경</p>
+
+        <!-- 방문 및 참배 안내 박스 -->
+        <div style="background: rgba(212, 175, 55, 0.08); border: 1px dashed var(--border-gold); border-radius: 8px; padding: 12px 14px; margin: 8px 0 12px 0;">
+          <h6 style="color: var(--color-secondary); font-size: 0.84rem; font-weight: 700; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-calendar-check"></i> 참배 및 위패봉안 방문 상담 안내
+          </h6>
+          <p style="font-size: 0.74rem; color: #C5D8D3; line-height: 1.5;">
+            • <strong>상담 시간:</strong> 연중무휴 오전 09:00 ~ 오후 05:00<br>
+            • <strong>사전 예약:</strong> 방문 전 전화 주시면 법사님 1:1 맞춤 안내<br>
+            • <strong>주차 편의:</strong> 사찰 경내 대형 전용 주차장 완비
+          </p>
+        </div>
+
+        <div class="info-footer serif">
+          "사람들의 소원이 모여 만든 절, 소원사"
+        </div>
+      </div>
+
+      <!-- [오른쪽 면] 1면: 앞표지 (메인 타이틀) -->
+      <div class="page page-cover" style="justify-content: space-between; padding: 55px 35px 45px 35px;">
+        <div class="page-border"></div>
+        <div class="cover-icon" style="margin-top: 15px;">
+          <i class="fa-solid fa-dharmachakra"></i>
+        </div>
+        <div style="margin: auto 0;">
+          <h2 class="serif cover-title-main">생사일여<br>(生死一如)</h2>
+          <p class="cover-subtitle serif">
+            살아생전에는 참회의 공덕을 짓고,<br>
+            사후에는 대를 이어 평안을 모십니다.
+          </p>
+        </div>
+        <div class="cover-footer serif" style="margin-bottom: 15px;">
+          제주 소원사
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. 안쪽 지면 (내면) -->
+    <div class="brochure-spread spread-inside" id="spread-inside-view">
+      
+      <!-- [왼쪽 면] 3면: 생전 (생전 예수재) -->
+      <div class="page" style="justify-content: flex-start; gap: 4px;">
+        <div class="page-border"></div>
+        <h4 class="serif inside-title">생전 예수재 (연계형)</h4>
+        
+        <!-- 생전 예수재 의식 (바라춤) -->
+        <div class="brochure-img-wrapper" style="margin: 5px 0 10px 0; border-radius: 8px; overflow: hidden; height: 100px; border: 1px solid rgba(8,28,23,0.1);">
+          <img src="./images/yeosujae_ceremony.jpg" alt="생전 예수재 바라춤 의식" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <p class="inside-subtitle" style="margin-bottom: 8px;"><strong>대상: 살아계신 분 본인/가족</strong><br>"건강할 때 스스로 닦아 안심하는 큰 공덕"</p>
+
+        <!-- 예수재 10대 공덕 추가 (현수막 이미지 기반) -->
+        <div class="merits-grid" style="margin-bottom: 8px;">
+          <div class="merits-title-wrapper">
+            <h6 class="merits-title"><i class="fa-solid fa-dharmachakra"></i> 생전예수재의 10대 공덕</h6>
+          </div>
+          <div class="merit-item"><span class="merit-num">1.</span> 마음의 희망과 즐거움</div>
+          <div class="merit-item"><span class="merit-num">2.</span> 전생·내생 죄업 소멸</div>
+          <div class="merit-item"><span class="merit-num">3.</span> 심신의 원만함 성취</div>
+          <div class="merit-item"><span class="merit-num">4.</span> 평안하고 화목한 가정</div>
+          <div class="merit-item"><span class="merit-num">5.</span> 건강하고 원만한 장수</div>
+          <div class="merit-item"><span class="merit-num">6.</span> 깨끗한 심덕의 정화</div>
+          <div class="merit-item"><span class="merit-num">7.</span> 바라는 소망 성취</div>
+          <div class="merit-item"><span class="merit-num">8.</span> 무량한 선신공덕 축적</div>
+          <div class="merit-item"><span class="merit-num">9.</span> 참된 깨달음의 지혜</div>
+          <div class="merit-item"><span class="merit-num">10.</span> 극락세계 왕생</div>
+        </div>
+
+        <div class="content-box" style="gap: 18px; margin-top: 35px;">
+          <div class="content-item">
+            <h5 style="font-size: 0.9rem; margin-bottom: 2px;"><i class="fa-solid fa-sun"></i> 스스로 올리는 최고의 공덕</h5>
+            <p style="font-size: 0.76rem; line-height: 1.4; padding-left: 14px; color: #444;">사후에 자손들이 올리는 백 번의 제사보다, 살아생전 본인의 의지로 직접 빚을 갚고 공덕을 쌓는 예수재 한 번의 공덕이 비교할 수 없이 지극합니다.</p>
+          </div>
+          <div class="content-item">
+            <h5 style="font-size: 0.9rem; margin-bottom: 2px;"><i class="fa-solid fa-shield-halved"></i> 임종 후 위패봉안 자동 연계</h5>
+            <p style="font-size: 0.76rem; line-height: 1.4; padding-left: 14px; color: #444;">생전 예수재 동참 시 사후에 추가 비용 없이 소원사 위패전의 영구 위패봉안으로 자동 승계/전환되어 사후 관리까지 자비롭게 이어집니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- [가운데 면] 4면: 연계 평생 프로그램 -->
+      <div class="page" style="justify-content: flex-start; gap: 4px;">
+        <div class="page-border"></div>
+        <h4 class="serif inside-title">예수재 평생 승계 프로그램</h4>
+
+        <!-- 소원사 위패 실물 사진 추가 -->
+        <div class="wipae-img-wrapper" style="margin-top: 5px;">
+          <img src="./images/wipae_photo.jpg" alt="소원사 위패 실물">
+        </div>
+        <p class="wipae-caption" style="margin-bottom: 5px;">소원사 위패 실물 (좌: 생전 금장 생패 / 우: 사후 흑칠 망패)</p>
+        
+        <p class="inside-subtitle" style="margin-bottom: 5px; font-size: 0.8rem; line-height: 1.5; text-align: center;">
+          "생전 예수재 동참 시 임종 후 사후 관리까지 사찰이 책임지고 연계해 드립니다."
+        </p>
+
+        <div class="flow-container" style="margin-top: 5px;">
+          <div class="flow-card" style="padding: 8px;">
+            <h6 style="font-size: 0.85rem;">1단계: 생전 예수재 봉행 (생패 봉안)</h6>
+            <p style="font-size: 0.72rem; line-height: 1.3;">살아생전 주지 스님과 함께 죄업 참회 및 10대 공덕을 쌓으며 삶을 평안하게 가꿉니다.</p>
+          </div>
+          <div class="flow-arrow-icon">
+            <i class="fa-solid fa-circle-arrow-down" style="font-size: 0.85rem;"></i>
+          </div>
+          <div class="flow-card" style="background-color: rgba(212, 175, 55, 0.1); border-color: var(--color-secondary); padding: 8px;">
+            <h6 style="font-size: 0.85rem; color: #7a5f00;">[추가 비용 없는 자동 승계]</h6>
+            <p style="font-size: 0.72rem; line-height: 1.3; color: #444;">예수재 동참 비용은 위패봉안과 동일하며, 임종 시 추가 비용 없이 영가 위패로 자동 전환됩니다.</p>
+          </div>
+          <div class="flow-arrow-icon">
+            <i class="fa-solid fa-circle-arrow-down" style="font-size: 0.85rem;"></i>
+          </div>
+          <div class="flow-card" style="padding: 8px;">
+            <h6 style="font-size: 0.85rem;">2단계: 사후 영구 위패봉안 (망패 전환)</h6>
+            <p style="font-size: 0.72rem; line-height: 1.3;">소원사 위패전에 영구 안치되어 스님의 매일 예불과 연 15회 정기 제사를 대행합니다.</p>
+          </div>
+        </div>
+        <p style="font-size: 0.65rem; color: #666; text-align: center; margin-top: 4px; font-style: italic; line-height: 1.3;">
+          ※ 이미 작고하신 조상 위패봉안 및 반려동물 천도재는 사찰 종무소에서 가족 맞춤 일정으로 즉시 봉행됩니다.
+        </p>
+      </div>
+
+      <!-- [오른쪽 면] 5면: 사후 (영가 위패봉안) -->
+      <div class="page" style="justify-content: flex-start; gap: 4px;">
+        <div class="page-border"></div>
+        <h4 class="serif inside-title">영가 위패봉안 (독립형)</h4>
+        
+        <!-- 소원사 위패전 전경 (영가 위패봉안) -->
+        <div class="brochure-img-wrapper" style="margin: 5px 0 10px 0; border-radius: 8px; overflow: hidden; height: 100px; border: 1px solid rgba(8,28,23,0.1);">
+          <img src="./images/wipae_enshrinement.jpg" alt="소원사 위패전 전경" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <p class="inside-subtitle" style="margin-bottom: 8px;"><strong>대상: 이미 돌아가신 부모/조상 영가</strong><br>"총 2,000기 중 잔여 1,000기 한정 명당 봉안"</p>
+
+        <!-- 정성 제례 체계 추가 (기획안 기반) -->
+        <div class="merits-grid" style="margin-bottom: 8px;">
+          <div class="merits-title-wrapper">
+            <h6 class="merits-title"><i class="fa-solid fa-hands-praying"></i> 연간 15회+ 정성 제례 체계</h6>
+          </div>
+          <div class="merit-item"><span class="merit-num">•</span> 명절 차례 (설·추석 연 2회)</div>
+          <div class="merit-item"><span class="merit-num">•</span> 백중 대재 (우란분재 1회)</div>
+          <div class="merit-item"><span class="merit-num">•</span> 지장재일 (매월 음력 18일)</div>
+          <div class="merit-item"><span class="merit-num">•</span> 매일 예불 (365일 영가 축원)</div>
+          <div class="merit-item"><span class="merit-num">•</span> 기일 단독 특별 제사 대행</div>
+          <div class="merit-item"><span class="merit-num">•</span> 49재 & 반려동물 천도재</div>
+        </div>
+
+        <div class="content-box" style="gap: 18px; margin-top: 35px;">
+          <div class="content-item">
+            <h5 style="font-size: 0.9rem; margin-bottom: 2px;"><i class="fa-solid fa-monument"></i> 영구 안심 봉안 및 즉시 안치</h5>
+            <p style="font-size: 0.76rem; line-height: 1.4; padding-left: 14px; color: #444;">이미 작고하신 조상님들을 소원사 청정 위패전에 모시고 대를 이어 영구히 안치하여, 정성을 다해 안심 관리해 드립니다.</p>
+          </div>
+          <div class="content-item">
+            <h5 style="font-size: 0.9rem; margin-bottom: 2px;"><i class="fa-solid fa-fire"></i> 기일 제사 및 49재 맞춤 대행</h5>
+            <p style="font-size: 0.76rem; line-height: 1.4; padding-left: 14px; color: #444;">기일 단독 제사 대행(제수비 20만원 별도) 및 49재, 100일재, 이장재 등 가문 사정에 맞춘 제례 의식을 법도대로 엄숙히 올립니다.</p>
+          </div>
+        </div>
+
+        <!-- 구분선 (조상 영가 봉안과 반려동물 특별 제례 구분) -->
+        <div style="border-top: 1px dashed rgba(212, 175, 55, 0.45); margin: 26px 0 16px 0; width: 100%;"></div>
+
+        <!-- 반려동물 천도재 안내 카드 -->
+        <div class="pet-card" style="margin-top: 0;">
+          <i class="fa-solid fa-paw"></i>
+          <div>
+            <h6>[특별 제례] 반려동물(인연영가) 천도재</h6>
+            <p>가족으로 함께한 소중한 반려동물의 극락왕생과 선처 환생을 발원하는 맞춤 49재 및 전용 천도재를 정성껏 봉행합니다.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function filterSpread(type) {
+      const outside = document.getElementById('spread-outside-view');
+      const inside = document.getElementById('spread-inside-view');
+      
+      const btnAll = document.getElementById('btn-show-all');
+      const btnOut = document.getElementById('btn-show-outside');
+      const btnIn = document.getElementById('btn-show-inside');
+      
+      btnAll.classList.remove('active');
+      btnOut.classList.remove('active');
+      btnIn.classList.remove('active');
+      
+      if (type === 'all') {
+        outside.style.display = 'grid';
+        inside.style.display = 'grid';
+        btnAll.classList.add('active');
+      } else if (type === 'outside') {
+        outside.style.display = 'grid';
+        inside.style.display = 'none';
+        btnOut.classList.add('active');
+      } else if (type === 'inside') {
+        outside.style.display = 'none';
+        inside.style.display = 'grid';
+        btnIn.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

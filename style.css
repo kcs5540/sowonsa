@@ -2864,3 +2864,76 @@ footer {
   }
 }
 
+/* Pamphlet Link Styles */
+.nav-link.nav-link-highlight {
+  color: var(--color-secondary) !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-link.nav-link-highlight:hover {
+  filter: brightness(1.2);
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 1.6s var(--transition-bezier);
+}
+
+.hero-cta.hero-cta-secondary {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--color-secondary);
+  color: #fff;
+}
+
+.hero-cta.hero-cta-secondary:hover {
+  background: var(--color-secondary);
+  color: #081C17;
+}
+
+.enshrine-pamphlet-banner {
+  margin: 1.8rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pamphlet-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.8rem;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--color-secondary);
+  border-radius: 50px;
+  color: var(--color-secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s var(--transition-bezier);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+}
+
+.pamphlet-banner-btn:hover {
+  background: var(--color-secondary);
+  color: #081C17;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.section-dark .pamphlet-banner-btn {
+  background: rgba(212, 175, 55, 0.15);
+  color: #FAF6F0;
+}
+
+.section-dark .pamphlet-banner-btn:hover {
+  background: var(--color-secondary);
+  color: #081C17;
+}
+
+
