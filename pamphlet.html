@@ -36,27 +36,38 @@
     /* 컨트롤러 (인쇄 시 숨김) */
     .controls {
       background-color: #1b211d;
-      padding: 15px 30px;
+      padding: 10px 20px;
       border-radius: 50px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       display: flex;
-      gap: 15px;
+      gap: 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       z-index: 100;
+      max-width: 95vw;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
+    .controls::-webkit-scrollbar {
+      display: none;
     }
 
     .btn {
-      padding: 10px 24px;
+      padding: 9px 18px;
       border-radius: 30px;
       border: 1px solid var(--color-secondary);
       background-color: transparent;
       color: #fff;
       font-weight: 700;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn:hover, .btn.active {
@@ -469,6 +480,53 @@
       /* 접지선 인쇄 안 됨 */
       .brochure-spread::after, .brochure-spread::before {
         display: none !important;
+      }
+    }
+
+    /* 모바일 및 태블릿 화면 최적화 (가로 분할 스크롤/단일 컬럼) */
+    @media screen and (max-width: 1160px) {
+      body {
+        padding: 20px 10px;
+      }
+      .controls {
+        position: sticky;
+        top: 10px;
+        width: calc(100vw - 20px);
+        margin-bottom: 20px;
+        padding: 8px 12px;
+      }
+      .btn {
+        padding: 7px 14px;
+        font-size: 0.82rem;
+      }
+      .brochure-container {
+        gap: 35px;
+        width: 100%;
+      }
+      .brochure-spread {
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      }
+      .brochure-spread::after, .brochure-spread::before {
+        display: none !important;
+      }
+      .page {
+        min-height: auto !important;
+        padding: 40px 24px !important;
+        border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+      }
+      .page:last-child {
+        border-bottom: none;
+      }
+      .page-border {
+        top: 12px;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
       }
     }
   </style>
