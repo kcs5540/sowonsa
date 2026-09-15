@@ -1323,15 +1323,15 @@ section {
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  align-items: stretch;
 }
 
 .services-info {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -1390,22 +1390,48 @@ section {
   border-collapse: collapse;
   text-align: left;
   font-size: 0.95rem;
+  word-break: keep-all;
 }
 
 .calendar-table th,
 .calendar-table td {
-  padding: 1.2rem 1.5rem;
+  padding: 1.1rem 1.4rem;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
+  vertical-align: middle;
 }
 
 .calendar-table th {
-  background-color: rgba(197, 176, 151, 0.06);
+  background-color: rgba(197, 176, 151, 0.08);
   color: var(--text-primary);
   font-weight: 700;
   letter-spacing: 0.03em;
-  font-size: 0.85rem;
-  text-transform: uppercase;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.calendar-table th:nth-child(1),
+.calendar-table td:nth-child(1) {
+  white-space: nowrap;
+  width: 180px;
+}
+
+.calendar-table th:nth-child(2),
+.calendar-table td:nth-child(2) {
+  white-space: nowrap;
+  width: 220px;
+}
+
+.calendar-table th:nth-child(3),
+.calendar-table td:nth-child(3) {
+  white-space: nowrap;
+  width: 140px;
+}
+
+.calendar-table th:nth-child(4),
+.calendar-table td:nth-child(4) {
+  min-width: 280px;
+  line-height: 1.6;
 }
 
 [data-theme="dark"] .calendar-table th {
