@@ -150,7 +150,10 @@ function initMobileMenu() {
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  menuBtn.addEventListener('click', () => {
+  if (!menuBtn || !navMenu) return;
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     navMenu.classList.toggle('open');
     const isOpen = navMenu.classList.contains('open');
     menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
@@ -161,6 +164,14 @@ function initMobileMenu() {
       navMenu.classList.remove('open');
       menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
     });
+  });
+
+  // 메뉴 바깥 영역(하단 빈 화면) 터치 시 닫기
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
   });
 }
 
