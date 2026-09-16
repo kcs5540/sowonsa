@@ -451,6 +451,7 @@ function initConsultations() {
 
   if (openBtn && modal) {
     openBtn.addEventListener('click', () => {
+      document.body.style.overflow = 'hidden';
       modal.style.display = 'flex';
       setTimeout(() => {
         modal.classList.add('active');
@@ -458,22 +459,22 @@ function initConsultations() {
     });
   }
 
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 400);
+  };
+
   if (closeBtn && modal) {
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      setTimeout(() => {
-        modal.style.display = 'none';
-      }, 400);
-    });
+    closeBtn.addEventListener('click', closeModal);
   }
 
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.classList.remove('active');
-        setTimeout(() => {
-          modal.style.display = 'none';
-        }, 400);
+        closeModal();
       }
     });
   }

@@ -1492,15 +1492,19 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 20, 31, 0.6);
+  height: 100dvh;
+  background-color: rgba(15, 20, 31, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: 2000;
   display: none;
   align-items: center;
   justify-content: center;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
-  transition: opacity 0.5s var(--transition-bezier);
+  transition: opacity 0.4s var(--transition-bezier);
 }
 
 .consult-modal.active {
@@ -1511,15 +1515,18 @@ section {
 .consult-modal-dialog {
   background-color: var(--bg-secondary);
   width: 100%;
-  max-width: 520px;
-  border-radius: 32px;
+  max-width: 500px;
+  max-height: calc(100dvh - 3rem);
+  border-radius: 28px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
   position: relative;
-  overflow: hidden;
-  transform: scale(0.92);
-  transition: transform 0.5s var(--transition-bezier);
-  padding: 3.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: scale(0.95);
+  transition: transform 0.4s var(--transition-bezier);
+  padding: 2.5rem 2rem 2rem;
+  margin: auto;
 }
 
 .consult-modal.active .consult-modal-dialog {
@@ -1528,32 +1535,39 @@ section {
 
 .consult-modal-close {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(120, 120, 120, 0.1);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-secondary);
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  opacity: 0.6;
-  transition: all 0.4s var(--transition-bezier);
+  transition: all 0.3s var(--transition-bezier);
+  z-index: 10;
 }
 
 .consult-modal-close:hover {
-  opacity: 1;
-  color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
   transform: rotate(90deg);
 }
 
 .consult-modal-header {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.8rem;
   text-align: center;
+  padding-right: 1.5rem;
 }
 
 .consult-modal-header h4 {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   font-family: var(--font-serif);
@@ -1612,10 +1626,6 @@ section {
     background-color: rgba(8, 28, 23, 0.45);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-  }
-  .consult-modal-dialog {
-    max-width: 90%;
-    padding: 2rem 1.5rem;
   }
   .intro-overlay-card {
     bottom: 1rem;
@@ -2477,10 +2487,87 @@ footer {
     font-size: 0.8rem;
   }
   
+  /* 모바일 상담 모달 반응형 최적화 */
+  .consult-modal {
+    padding: 0.75rem;
+    align-items: center;
+  }
+
   .consult-modal-dialog {
-    padding: 2.2rem 1.5rem;
-    width: 92%;
-    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    max-height: calc(100dvh - 1.5rem);
+    padding: 1.5rem 1.2rem 1.3rem;
+    border-radius: 20px;
+    margin: auto;
+  }
+
+  .consult-modal-close {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .consult-modal-header {
+    margin-bottom: 1rem;
+    padding-right: 2.2rem;
+    text-align: left;
+  }
+
+  .consult-modal-header h4 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  .consult-modal-header p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+
+  .consult-modal-body .consultation-form-element {
+    gap: 0.65rem;
+  }
+
+  .consult-modal-body .form-group {
+    gap: 0.25rem;
+  }
+
+  .consult-modal-body .form-group label {
+    font-size: 0.82rem;
+  }
+
+  .consult-modal-body .form-group input,
+  .consult-modal-body .form-group select,
+  .consult-modal-body .form-group textarea {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  .consult-modal-body textarea {
+    min-height: 55px;
+    height: 55px;
+  }
+
+  .consult-modal-body .form-checkbox {
+    margin-top: 0.1rem;
+    gap: 0.45rem;
+    align-items: flex-start;
+  }
+
+  .consult-modal-body .form-checkbox label {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  .consult-modal-body .submit-btn {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+    margin-top: 0.45rem;
   }
   
   .nav-menu {
