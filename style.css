@@ -2919,15 +2919,18 @@ footer {
 
 /* Pamphlet Link Styles */
 .nav-link.nav-link-highlight {
-  color: var(--color-secondary) !important;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
-.nav-link.nav-link-highlight:hover {
-  filter: brightness(1.2);
+.nav-link.nav-link-highlight i {
+  color: var(--color-secondary);
+  transition: transform 0.3s var(--transition-bezier), color 0.3s ease;
+}
+
+.nav-link.nav-link-highlight:hover i {
+  transform: scale(1.15);
 }
 
 .hero-cta-group {
