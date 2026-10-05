@@ -15,6 +15,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "proposal.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "partner-guide.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "style.css",
       "use": "@vercel/static"
     },
