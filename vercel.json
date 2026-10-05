@@ -49,6 +49,14 @@
       "dest": "api/save-consultation.js"
     },
     {
+      "src": "/proposal",
+      "dest": "proposal.html"
+    },
+    {
+      "src": "/partner-guide",
+      "dest": "partner-guide.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
