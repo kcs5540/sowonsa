@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>제주 소원사 스마트 사찰 통합 관리 플랫폼 제안서</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --primary: #8C1D1D;
+      --primary-dark: #661010;
+      --primary-light: #FFF5F5;
+      --gold: #C59B27;
+      --gold-light: #FEFCBF;
+      --gold-dark: #8F6B0E;
+      --slate-900: #1A202C;
+      --slate-800: #2D3748;
+      --slate-700: #4A5568;
+      --slate-500: #718096;
+      --slate-200: #E2E8F0;
+      --slate-100: #F7FAFC;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background: #F0F4F8;
+      color: var(--slate-800);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .toolbar {
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .toolbar .status {
+      font-size: 14px;
+      color: var(--slate-700);
+      font-weight: 600;
+    }
+    .btn-print {
+      background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      border: 1px solid #DFE3E8;
+      overflow: hidden;
+    }
+    .cover-banner {
+      background: linear-gradient(135deg, #661010 0%, #8C1D1D 50%, #A82828 100%);
+      color: var(--white);
+      padding: 50px 48px;
+      position: relative;
+    }
+    .badge {
+      display: inline-block;
+      background: #FEFCBF;
+      color: #744210;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      border: 1px solid #ECC94B;
+    }
+    .title {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #FED7D7;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      font-size: 14px;
+      color: #FEEBC8;
+    }
+    .body-content {
+      padding: 48px;
+    }
+    .section {
+      margin-bottom: 45px;
+    }
+    .section:last-child {
+      margin-bottom: 0;
+    }
+    .sec-head {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--slate-200);
+    }
+    .sec-num {
+      background: var(--primary);
+      color: var(--white);
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .lead-box {
+      background: #FFF8F8;
+      border: 1px solid #FEB2B2;
+      border-left: 5px solid var(--primary);
+      padding: 18px 22px;
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--slate-800);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+    .lead-box strong { color: var(--primary-dark); }
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .module-card {
+      background: #FAFCFE;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 22px;
+      position: relative;
+    }
+    .module-card h4 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .module-card ul {
+      list-style: none;
+    }
+    .module-card li {
+      font-size: 14px;
+      color: var(--slate-700);
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 14px;
+      line-height: 1.55;
+    }
+    .module-card li::before {
+      content: "•";
+      color: var(--gold);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .table-style {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 14px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+    }
+    .table-style th {
+      background: #EDF2F7;
+      color: var(--slate-800);
+      padding: 13px 16px;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid #CBD5E0;
+    }
+    .table-style td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--slate-200);
+      color: var(--slate-700);
+    }
+    .table-style tr:last-child td { border-bottom: none; }
+    .table-style tr:nth-child(even) td { background: #F8FAFC; }
+    .rate-pill {
+      display: inline-block;
+      background: #FEEBC8;
+      color: #744210;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .pricing-card {
+      background: linear-gradient(180deg, #FFFAF0 0%, #FFFFFF 100%);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(197, 155, 39, 0.1);
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px dashed #ECC94B;
+    }
+    .price-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .price-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #744210;
+      margin-bottom: 4px;
+    }
+    .price-desc {
+      font-size: 13px;
+      color: var(--slate-500);
+    }
+    .price-amount {
+      text-align: right;
+    }
+    .price-big {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .price-vat {
+      font-size: 12px;
+      color: var(--slate-500);
+      margin-left: 4px;
+    }
+    .timeline {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .timeline-step {
+      flex: 1;
+      background: #F7FAFC;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .timeline-step .week {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .timeline-step .desc {
+      font-size: 13px;
+      color: var(--slate-700);
+      line-height: 1.5;
+    }
+    .signature-area {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--slate-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .sig-text {
+      font-size: 14px;
+      color: var(--slate-600);
+      line-height: 1.8;
+    }
+    .sig-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .paper { box-shadow: none; border: none; }
+      .toolbar { display: none; }
+      .body-content { padding: 25px 30px; }
+      .cover-banner { padding: 35px 30px; }
+      .section { margin-bottom: 30px; }
+      .price-big { font-size: 20px; }
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 15px 0;
+    }
+    .table-style {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+      word-break: keep-all;
+    }
+    @media (max-width: 700px) {
+      .module-grid { grid-template-columns: 1fr; }
+      .timeline { flex-direction: column; }
+      .body-content { padding: 20px 16px; }
+      .cover-banner { padding: 30px 18px; }
+      .title { font-size: 22px; }
+      .table-style {
+        min-width: 500px;
+        font-size: 13px;
+      }
+      .table-style th, .table-style td {
+        padding: 10px 8px;
+      }
+      .signature-area {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-top: 35px;
+        padding-top: 20px;
+      }
+      .signature-area > div:last-child {
+        align-self: flex-end;
+        text-align: right;
+      }
+      .sig-name {
+        font-size: 17px;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="status">📌 제주 소원사 x 제주AI파트너 공식 협력 제안서</div>
+    <button class="btn-print" onclick="window.print()">🖨️ A4 인쇄 / PDF로 저장</button>
+  </div>
+
+  <div class="paper">
+    <header class="cover-banner">
+      <div class="badge">사찰 디지털 전환 & 포교 마케팅 솔루션</div>
+      <h1 class="title">제주 소원사 스마트 사찰 통합 관리 플랫폼 제안서</h1>
+      <p class="subtitle">— 디지털 신도 명부 관리와 포교·불사(위패/기도) 연계 ‘인연(因緣) 마케팅’ 시스템 —</p>
+      
+      <div class="meta-row">
+        <div><strong>제안 대상:</strong> 제주 소원사 (주지스님 및 종무소 귀하)</div>
+        <div><strong>제안 주관:</strong> 제주AI파트너 (대표 김철수)</div>
+      </div>
+    </header>
+
+    <main class="body-content">
+      
+      <!-- 1. 제안 배경 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">1</span> 제안 배경 및 필요성</h2>
+        <div class="lead-box">
+          “전통적인 지인 소개 중심의 포교 방식에서 벗어나, <strong>전국 불자들이 자발적으로 동참을 권선(勸善)하는 디지털 인프라</strong>와 
+          종무소의 장부 관리 피로도를 획기적으로 줄여줄 <strong>스마트 신도 ERP</strong>가 절실한 시점입니다.”
+        </div>
+        <p style="font-size: 14px; color: var(--slate-700); line-height: 1.8;">
+          신도 고령화와 접수 내역의 수기/엑셀 분산은 초파일·백중 등 대목마다 큰 행정 병목을 초래합니다. 
+          특히 사찰의 지속 가능한 미래를 위해서는 <strong>젊은 세대와 전국의 신규 불자를 대거 유입시켜 사찰 신도 수를 획기적으로 확장(신도 배가 운동)</strong>하는 현대적 포교 시스템이 필수적입니다.<br>
+          단순 1회성 방문에 그치지 않고 사찰의 평생 신도로 정착시키며, 위패 봉안 및 주요 불사의 폭발적 확장을 이끌어내기 위해서는 
+          <strong>신규 신도를 인도하고 불사 동참을 성사시킨 불자·영업자에게 감사의 보시금(수당)을 투명하게 정산해 주는 '인연 전산 엔진'</strong>이 반드시 결합되어야 합니다.
+        </p>
+      </section>
+
+      <!-- 2. 핵심 모듈 구성 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">2</span> 「소원사 인연(因緣) 통합 플랫폼」 4대 핵심 모듈</h2>
+        <div class="module-grid">
+          
+          <div class="module-card">
+            <h4>📿 ① 스마트 신도 명부 (CRM & ERP)</h4>
+            <ul>
+              <li><strong>가족 단위 통합 명부 DB</strong>: 세주(세대주) 중심 가족 관계도, 음력 생년월일·기일 자동 연산 엔진</li>
+              <li><strong>축원·법회 알림톡 자동 발송</strong>: 초하루, 지장재일, 백중 맞춤 대량 알림톡/문자 API 연동</li>
+              <li><strong>기도·불사 종합 이력 관리</strong>: 신도별 위패, 연등, 인등, 시주 납부 이력 영구 보관 및 통합 검색</li>
+              <li><strong>기존 신도 vs 추천 유입 신도 자동 분리</strong>: 사찰 고유 신도 보호 및 추천인 코드 매핑 DB</li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <h4>📱 ② 불사·위패 모바일 접수 (반응형 웹앱)</h4>
+            <ul>
+              <li><strong>모바일 원스톱 접수 폼</strong>: 영가(망자) 본관/이름, 축원 내용, 동참자 정보 간편 입력 UI</li>
+              <li><strong>품목별 자동 안내</strong>: 영구위패, 연등, 인등 등 선택 항목별 계좌번호 및 입금액 자동 계산 안내</li>
+              <li><strong>개인 추천 코드 자동 추적</strong>: 추천 링크 클릭 유입 시 가입/접수 폼에 추천인 자동 매핑 쿠키 세션</li>
+              <li><strong>실시간 접수 알림</strong>: 신규 접수 즉시 종무소 관리자 및 담당 파트너에게 카톡/문자 실시간 통보</li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <h4>🤝 ③ 인연(因緣) 마케팅 정산 엔진 (계보/수당)</h4>
+            <ul>
+              <li><strong>개인별 고유 추천 URL/QR 발급</strong>: 파트너별 단축 추천 링크(`?ref=보현화`) 및 모바일 명함 제공</li>
+              <li><strong>3단계 계보(Tree) 자동 추적 엔진</strong>: 1대(30%), 2대(10%), 3대(5%) 수당 실시간 자동 연산 및 검증</li>
+              <li><strong>포교 파트너 전용 모바일 대시보드</strong>: 본인 추천 신도 목록, 적립 보시금 현황, 월별 내역 실시간 조회</li>
+              <li><strong>보시금 출금 신청 및 승인 시스템</strong>: 파트너 출금 요청 및 종무소 계좌 이체 승인 프로세스</li>
+            </ul>
+          </div>
+
+          <div class="module-card">
+            <h4>💻 ④ 종무소 관리자 포털 (Admin)</h4>
+            <ul>
+              <li><strong>입금 확인 원클릭 승인</strong>: 통장 입금 확인 버튼 클릭 시 정산 확정 및 등표/축원 명단 자동 생성</li>
+              <li><strong>축원 명단 & 등표 자동 출력</strong>: 초파일·백중 행사 시 법당 부착용 등표 및 스님 축원문 A4 일괄 출력</li>
+              <li><strong>월별 정산 엑셀 일괄 다운로드</strong>: 지급 대상자, 은행, 계좌번호, 원천징수 계산 엑셀 다운로드</li>
+              <li><strong>관리자 권한 제어 & 보안 로그</strong>: 주지스님, 종무원 담당자별 접근 권한 분리 및 개인정보 암호화</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. 차등 요율표 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">3</span> 불사 품목별 보시금(수당) 차등 요율 체계</h2>
+        <p style="font-size: 13px; color: var(--slate-500); margin-bottom: 10px;">
+          * 사찰 재정을 보호하면서, 고단가 위패 불사는 전국적 동참을 유도할 수 있도록 요율을 분리합니다.
+        </p>
+        <!-- 품목별 요율 카드 리스트 (모바일 완벽 최적화) -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 15px;">
+          
+          <!-- 카드 1: 고단가 불사 -->
+          <div style="background: #FFFDFD; border: 1.5px solid #FEB2B2; border-radius: 10px; padding: 18px 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 16px; font-weight: 800; color: var(--primary);">🪷 고단가 불사</span>
+              <span style="font-size: 12px; background: #FFF5F5; color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 700;">전국 집중 확산</span>
+            </div>
+            <div style="font-size: 13.5px; color: var(--slate-700); margin-bottom: 12px;">
+              영구위패 봉안, 천도재, 49재, 생전예수재
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: #F7FAFC; padding: 10px; border-radius: 8px; text-align: center;">
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">1대 (직접)</div>
+                <div style="font-size: 16px; font-weight: 800; color: var(--primary);">30%</div>
+              </div>
+              <div style="border-left: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0;">
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">2대</div>
+                <div style="font-size: 16px; font-weight: 800; color: #744210;">10%</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">3대</div>
+                <div style="font-size: 16px; font-weight: 800; color: #744210;">5%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 카드 2: 정기·시즌 불사 -->
+          <div style="background: #FFFDFD; border: 1.5px solid #FEEBC8; border-radius: 10px; padding: 18px 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 16px; font-weight: 800; color: #975A16;">🏮 정기·시즌 불사</span>
+              <span style="font-size: 12px; background: #FEFCBF; color: #744210; padding: 2px 8px; border-radius: 4px; font-weight: 700;">연중 안정 재정</span>
+            </div>
+            <div style="font-size: 13.5px; color: var(--slate-700); margin-bottom: 12px;">
+              부처님오신날 연등, 인등, 백일기도
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: #F7FAFC; padding: 10px; border-radius: 8px; text-align: center;">
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">1대 (직접)</div>
+                <div style="font-size: 16px; font-weight: 800; color: var(--primary);">30%</div>
+              </div>
+              <div style="border-left: 1px solid #E2E8F0; border-right: 1px solid #E2E8F0;">
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">2대</div>
+                <div style="font-size: 16px; font-weight: 800; color: #744210;">10%</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: var(--slate-500); margin-bottom: 2px;">3대</div>
+                <div style="font-size: 16px; font-weight: 800; color: #744210;">5%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 카드 3: 일반 보시 -->
+          <div style="background: #F7FAFC; border: 1px dashed #CBD5E0; border-radius: 10px; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--slate-800);">🙏 일반 보시 (불전함, 쌀/과일 시주)</div>
+              <div style="font-size: 12px; color: var(--slate-500);">사찰 순수 유지관리비 목적</div>
+            </div>
+            <div style="font-size: 13px; font-weight: 800; color: #2B6CB0; background: #EBF8FF; padding: 4px 10px; border-radius: 6px;">
+              100% 사찰 귀속 (수당 제외)
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. 도입 기대효과 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">4</span> 도입 전·후 비교 및 사찰 경영 기대효과</h2>
+        
+        <div style="background: #FFFDF7; border: 1px solid #ECC94B; border-left: 5px solid var(--gold); padding: 16px 20px; border-radius: 8px; margin-bottom: 20px; font-size: 14.5px; color: #744210; line-height: 1.7;">
+          💬 <strong>"대표님, 언제까지 절을 찾아오는 신도들만 기다리시겠습니까?"</strong><br>
+          스마트 인연 플랫폼을 도입하면, 소원사는 <strong>'앉아서 기다리는 외딴 사찰'</strong>에서 <strong>'전국 불자들이 스스로 홍보하고 찾아오는 대한민국 대표 포교 도량'</strong>으로 완전히 탈바꿈합니다.
+        </div>
+
+        <!-- 도입 기대효과 Before & After 카드 리스트 (모바일 완벽 최적화) -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <!-- 항목 1: 신도 유치 & 포교 범위 -->
+          <div style="border: 1px solid var(--slate-200); border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="background: #EDF2F7; padding: 10px 16px; font-weight: 800; font-size: 15px; color: var(--slate-800); border-bottom: 1px solid var(--slate-200);">
+              📍 1. 신도 유치 & 포교 범위
+            </div>
+            <div style="padding: 14px 16px; background: #FAFBFD; border-bottom: 1px dashed #E2E8F0;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #718096; background: #EDF2F7; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">도입 전 안타까운 현실</span>
+              <p style="font-size: 13.5px; color: #718096; line-height: 1.6; margin: 0;">
+                • 제주도 인근 지인 및 고령 신도에 국한<br>
+                • 신규 불자 유입이 멈춰 사찰이 점차 노령화됨
+              </p>
+            </div>
+            <div style="padding: 14px 16px; background: #FFFDFD;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: var(--primary); background: #FFF5F5; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">✨ 플랫폼 도입 후 눈부신 변화</span>
+              <p style="font-size: 14px; color: var(--slate-800); line-height: 1.65; margin: 0;">
+                <strong style="color: var(--primary);">🚀 전국 단위 불자 1만 명 확보 (신도 배가)</strong><br>
+                • <strong>제주도 내 신도 확장은 물론</strong>, 서울·부산 등 전국 불자들이 카톡 링크로 소원사 신도로 등록<br>
+                • 젊은 자녀 세대까지 스마트폰으로 소원사 인연 맺기
+              </p>
+            </div>
+          </div>
+
+          <!-- 항목 2: 위패 봉안 & 불사 재정 -->
+          <div style="border: 1px solid var(--slate-200); border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="background: #EDF2F7; padding: 10px 16px; font-weight: 800; font-size: 15px; color: var(--slate-800); border-bottom: 1px solid var(--slate-200);">
+              🪷 2. 위패 봉안 & 불사 재정
+            </div>
+            <div style="padding: 14px 16px; background: #FAFBFD; border-bottom: 1px dashed #E2E8F0;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #718096; background: #EDF2F7; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">도입 전 안타까운 현실</span>
+              <p style="font-size: 13.5px; color: #718096; line-height: 1.6; margin: 0;">
+                • 절에 직접 발걸음한 참배객에게만 조심스럽게 권선<br>
+                • 훌륭한 법당과 위패를 모셔두고도 공실로 비어있음
+              </p>
+            </div>
+            <div style="padding: 14px 16px; background: #FFFDFD;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: var(--primary); background: #FFF5F5; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">✨ 플랫폼 도입 후 눈부신 변화</span>
+              <p style="font-size: 14px; color: var(--slate-800); line-height: 1.65; margin: 0;">
+                <strong style="color: var(--primary);">📈 위패 봉안실 만실 달성 & 폭발적 재정 확충</strong><br>
+                • 전국 전법 파트너들이 자발적으로 뛰며 위패 모시기 권선<br>
+                • 매월 고정적인 대규모 불사금 유입으로 사찰 살림 안정
+              </p>
+            </div>
+          </div>
+
+          <!-- 항목 3: 종무소 행정 피로도 -->
+          <div style="border: 1px solid var(--slate-200); border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="background: #EDF2F7; padding: 10px 16px; font-weight: 800; font-size: 15px; color: var(--slate-800); border-bottom: 1px solid var(--slate-200);">
+              💻 3. 종무소 행정 피로도
+            </div>
+            <div style="padding: 14px 16px; background: #FAFBFD; border-bottom: 1px dashed #E2E8F0;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #718096; background: #EDF2F7; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">도입 전 안타까운 현실</span>
+              <p style="font-size: 13.5px; color: #718096; line-height: 1.6; margin: 0;">
+                • 초파일/백중마다 엑셀 파일과 수기 장부를 일일이 대조하며 며칠 밤샘 취합<br>
+                • 신도 전화 오면 파일 찾느라 진땀, 엑셀 수식 오류나 명단 누락 사고 빈발
+              </p>
+            </div>
+            <div style="padding: 14px 16px; background: #FFFDFD;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #2B6CB0; background: #EBF8FF; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">✨ 플랫폼 도입 후 눈부신 변화</span>
+              <p style="font-size: 14px; color: var(--slate-800); line-height: 1.65; margin: 0;">
+                <strong style="color: #2B6CB0;">⚡ 클릭 1초 만에 축원 명단 & 등표 자동 출력</strong><br>
+                • 가족 음력 생일·기일 자동 계산으로 맞춤 알림톡 발송<br>
+                • 종무원 피로도 제로, 스님은 기도와 포교에만 전념
+              </p>
+            </div>
+          </div>
+
+          <!-- 항목 4: 불사 정산 & 대외 신뢰 -->
+          <div style="border: 1px solid var(--slate-200); border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="background: #EDF2F7; padding: 10px 16px; font-weight: 800; font-size: 15px; color: var(--slate-800); border-bottom: 1px solid var(--slate-200);">
+              🤝 4. 불사 정산 & 대외 신뢰
+            </div>
+            <div style="padding: 14px 16px; background: #FAFBFD; border-bottom: 1px dashed #E2E8F0;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #718096; background: #EDF2F7; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">도입 전 안타까운 현실</span>
+              <p style="font-size: 13.5px; color: #718096; line-height: 1.6; margin: 0;">
+                • "누가 소개했네, 수당을 덜 줬네" 수기 계산 오해와 불신<br>
+                • 열심히 도와주던 보살님도 서운해서 발길을 돌림
+              </p>
+            </div>
+            <div style="padding: 14px 16px; background: #FFFDFD;">
+              <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #276749; background: #F0FFF4; padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;">✨ 플랫폼 도입 후 눈부신 변화</span>
+              <p style="font-size: 14px; color: var(--slate-800); line-height: 1.65; margin: 0;">
+                <strong style="color: #276749;">🕊️ 1원의 오차 없는 100% 투명 정산으로 신뢰 폭발</strong><br>
+                • 추천인 모바일 화면에 실시간으로 투명하게 보시금 적립<br>
+                • 사찰에 헌신하는 충성도 높은 전국 정예 포교 조직 결성
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 5. 견적 및 조건 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">5</span> 시스템 구축 및 유지관리 견적 비교</h2>
+        
+        <div style="background: #EBF8FF; border: 1px solid #BEE3F8; border-left: 5px solid #3182CE; padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 14px; color: #2B6CB0;">
+          💡 <strong>[외주 비용 대폭 절감]</strong> 일반 IT 전문 소프트웨어 개발사에 의뢰할 경우 <strong>최소 1,500만 ~ 2,000만 원 이상</strong> 소요되는 복합 전산(CRM + 계보 추천 정산 엔진) 시스템입니다. 
+          소원사와의 전담 파트너십을 바탕으로 불필요한 중간 마진을 완전히 제거하여 <strong>시중 시세 대비 60% 이상 파격적으로 저렴한 실비</strong>로 제안드립니다.
+        </div>
+
+        <div class="table-responsive">
+          <table class="table-style" style="margin-bottom: 20px;">
+            <thead>
+              <tr>
+                <th style="width: 25%;">항목 구분</th>
+                <th style="width: 37%;">일반 IT 외주 개발사 의뢰 시</th>
+                <th style="width: 38%; background: #FFF5F5; color: var(--primary); border-bottom-color: var(--primary);">제주AI파트너 제안가 (소원사 특가)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>초기 시스템 구축비</strong></td>
+                <td style="color: #E53E3E; text-decoration: line-through;">1,500만 ~ 2,000만 원 상당</td>
+                <td style="background: #FFFDFD; font-weight: 800; color: var(--primary); font-size: 16px;">
+                  700만 원 <span style="font-size: 12px; font-weight: normal; color: #718096;">(60% 절감 파격 실비)</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>월 유지보수·서버비</strong></td>
+                <td style="color: #718096;">월 80만 ~ 120만 원 수준</td>
+                <td style="background: #FFFDFD; font-weight: 800; color: #2D3748; font-size: 15px;">
+                  월 40만 원 <span style="font-size: 12px; font-weight: normal; color: #718096;">(실제 클라우드 운영비 수준)</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>사찰 특성 이해도</strong></td>
+                <td>불교 용어/신도 체계 몰라 잦은 재작업</td>
+                <td style="background: #FFFDFD; font-weight: 700; color: #2C5282;">사찰 행정·위패·불사 체계 100% 맞춤 설계</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pricing-card">
+          <div class="price-row">
+            <div>
+              <div class="price-title">1. 시스템 구축비 (초기 1회)</div>
+              <div class="price-desc">* 시중 외주가(1,500만~2,000만원) 대비 거품 없는 확정 실비</div>
+              <div class="price-desc">* 포함 내역: 신도 DB 구축, 모바일 접수 폼, 3대 수당 엔진, 관리자 포털 완비</div>
+            </div>
+            <div class="price-amount">
+              <span class="price-big">700만 원</span><span class="price-vat">(VAT 별도)</span>
+            </div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="price-title">2. 월 정기 시스템 유지관리비</div>
+              <div class="price-desc">* 고성능 클라우드 서버 호스팅, 일일 데이터 자동 백업, 수당 정산일 실시간 기술 지원</div>
+            </div>
+            <div class="price-amount">
+              <span class="price-big">월 40만 원</span><span class="price-vat">(VAT 별도)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. 일정 -->
+      <section class="section">
+        <h2 class="sec-head"><span class="sec-num">6</span> 개발 및 도입 일정 (총 3주 완성)</h2>
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="week">1주차 (설계 & 기획)</div>
+            <div class="desc">신도 명부 항목 협의, 불사 품목별 수당 요율 확정, DB 스키마 설계</div>
+          </div>
+          <div class="timeline-step">
+            <div class="week">2주차 (엔진 & 화면 개발)</div>
+            <div class="desc">모바일 접수 화면 개발, 3대 수당 계산 엔진 구축, 관리자 화면 구현</div>
+          </div>
+          <div class="timeline-step">
+            <div class="week">3주차 (검증 & 오픈)</div>
+            <div class="desc">종무소 실무 테스트, 입출금 데이터 검증, 관리자 교육 및 정식 오픈</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 서명란 -->
+      <div class="signature-area" style="margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--slate-200); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+        <div class="sig-text" style="font-size: 14px; color: var(--slate-600); line-height: 1.8; min-width: 240px; flex: 1;">
+          제주 소원사의 번영과 여법한 포교 불사를 기원합니다.
+        </div>
+        <div style="text-align: right; min-width: 180px; margin-left: auto;">
+          <div style="font-size: 13px; color: var(--slate-500); margin-bottom: 4px;">제안사</div>
+          <div class="sig-name" style="font-size: 17px; font-weight: 800; color: var(--slate-900); white-space: nowrap;">제주AI파트너 대표 김철수</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

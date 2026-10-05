@@ -19,7 +19,15 @@
       "use": "@vercel/static"
     },
     {
+      "src": "sowonsa-plan.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "partner-guide.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "sowonsa-guide.html",
       "use": "@vercel/static"
     },
     {
