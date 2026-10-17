@@ -954,6 +954,7 @@ section {
 }
 
 .pavilion-img-wrapper {
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -969,6 +970,22 @@ section {
 
 .pavilion-img-wrapper:hover img {
   transform: scale(1.08);
+}
+
+.pavilion-img-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(8, 28, 23, 0.82);
+  color: #D4AF37;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  letter-spacing: 0.02em;
 }
 
 .pavilion-img-wrapper.large {
