@@ -1,5 +1,6 @@
 // Media Database
 const mediaItems = [
+  { type: 'youtube', src: 'GTPRvxd3dxw', category: 'video', isShorts: true, title: '명절마다 마음에 걸렸던 조상님 묘소, 이렇게 모셨습니다 | 제주 소원사 #shorts' },
   { type: 'youtube', src: 'xP6QFIcN0FA', category: 'video', title: '지친 마음이 머무는 곳, 한라산 맑은 정기 아래 청정 도량 | 제주 소원사' },
   { type: 'youtube', src: 'NHRurTO3NJY', category: 'video', title: '백록이 내린 기적의 절, 제주 소원사' },
   { type: 'youtube', src: 'KfbxbXhMCRg', category: 'video', title: '제주 소원사, 천년의 노래' },
@@ -261,7 +262,11 @@ function renderGallery() {
     let iconClass = 'fa-search-plus';
     
     if (item.type === 'youtube') {
-      mediaHtml = `<img src="https://img.youtube.com/vi/${item.src}/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${item.src}/hqdefault.jpg';" alt="${item.title}" class="youtube-thumb" loading="lazy">`;
+      const shortsBadge = item.isShorts ? '<span class="shorts-pill-badge"><i class="fa-brands fa-youtube"></i> Shorts</span>' : '';
+      mediaHtml = `
+        <img src="https://img.youtube.com/vi/${item.src}/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${item.src}/hqdefault.jpg';" alt="${item.title}" class="youtube-thumb" loading="lazy">
+        ${shortsBadge}
+      `;
       iconClass = 'fa-play-circle';
     } else if (item.type === 'video') {
       mediaHtml = `<video muted preload="metadata"><source src="./images/${item.src}" type="video/mp4"></video>`;
@@ -345,8 +350,13 @@ function openLightbox(index) {
   if (item.type === 'youtube') {
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube.com/embed/${item.src}?autoplay=1`;
-    iframe.className = 'lightbox-video';
+    iframe.className = item.isShorts ? 'lightbox-video lightbox-shorts' : 'lightbox-video';
     iframe.style.border = '0';
+    if (item.isShorts) {
+      iframe.style.aspectRatio = '9/16';
+      iframe.style.maxHeight = '80vh';
+      iframe.style.width = 'auto';
+    }
     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     iframe.setAttribute('allowfullscreen', 'true');
     mediaContainer.appendChild(iframe);
