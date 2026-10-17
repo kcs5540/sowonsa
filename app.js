@@ -261,7 +261,7 @@ function renderGallery() {
     let iconClass = 'fa-search-plus';
     
     if (item.type === 'youtube') {
-      mediaHtml = `<img src="https://img.youtube.com/vi/${item.src}/hqdefault.jpg" alt="${item.title}" class="youtube-thumb" loading="lazy">`;
+      mediaHtml = `<img src="https://img.youtube.com/vi/${item.src}/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${item.src}/hqdefault.jpg';" alt="${item.title}" class="youtube-thumb" loading="lazy">`;
       iconClass = 'fa-play-circle';
     } else if (item.type === 'video') {
       mediaHtml = `<video muted preload="metadata"><source src="./images/${item.src}" type="video/mp4"></video>`;
