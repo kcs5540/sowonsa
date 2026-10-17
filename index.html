@@ -19,7 +19,7 @@
 
   <!-- Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20261017_shorts">
+  <link rel="stylesheet" href="style.css?v=20261017_facilities">
 </head>
 <body>
 
@@ -36,7 +36,8 @@
       <nav class="nav-menu" id="nav-menu">
         <a href="#home" class="nav-link active">홈</a>
         <a href="#intro" class="nav-link">소원사 소개</a>
-        <a href="#gallery" class="nav-link">소원사 풍경</a>
+        <a href="#media-gallery" class="nav-link">미디어 & 영상</a>
+        <a href="#facilities" class="nav-link">도량 & 시설 안내</a>
         <a href="#pavilion" class="nav-link">부연정자</a>
         <a href="#enshrines-yesujae" class="nav-link">생전 예수재 & 위패봉안</a>
         <a href="pamphlet.html" class="nav-link nav-link-highlight" target="_blank"><i class="fa-solid fa-book-open"></i> 팜플렛 안내</a>
@@ -154,25 +155,25 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
-  <section class="gallery-section section-dark" id="gallery">
+  <!-- 1. Media & Video Section (유튜브 쇼츠, MV, 영상) -->
+  <section class="gallery-section section-dark" id="media-gallery">
     <div class="section-container">
       <div class="section-header reveal">
-        <span class="section-subtitle">Visual Experience</span>
-        <h2 class="section-title serif">소원사 풍경</h2>
+        <span class="section-subtitle">Media & Video Showcase</span>
+        <h2 class="section-title serif">소원사 미디어 & 영상</h2>
         <div class="divider">
           <div class="divider-line"></div>
-          <div class="divider-leaf"><i class="fa-solid fa-images"></i></div>
+          <div class="divider-leaf"><i class="fa-solid fa-play"></i></div>
           <div class="divider-line"></div>
         </div>
-        <p>평온하고 고요한 소원사의 일상과 사찰의 풍경, 그리고 부연정자가 지어지는 생생한 기록을 담았습니다.</p>
+        <p>유튜브 쇼츠, 힐링 뮤직비디오, 그리고 청정 도량의 평온한 기운을 담은 생생한 영상과 사찰 소식을 만나보세요.</p>
       </div>
 
       <div class="gallery-filters reveal">
         <button class="filter-btn active" data-filter="all">전체보기</button>
-        <button class="filter-btn" data-filter="scenery">사찰 풍경</button>
+        <button class="filter-btn" data-filter="video">유튜브 영상 & 쇼츠</button>
+        <button class="filter-btn" data-filter="scenery">사찰 기록 사진</button>
         <button class="filter-btn" data-filter="pavilion">부연정자 건립</button>
-        <button class="filter-btn" data-filter="video">영상 관람</button>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
@@ -180,7 +181,97 @@
       </div>
 
       <div class="gallery-loadmore reveal">
-        <button class="loadmore-btn" id="load-more-btn">사진 더 보기 <i class="fas fa-plus"></i></button>
+        <button class="loadmore-btn" id="load-more-btn">자료 더 보기 <i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Temple Facilities Section (도량 및 주요 시설 안내) -->
+  <section class="facilities-section section-light" id="facilities">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Temple Guide & Facilities</span>
+        <h2 class="section-title serif">소원사 도량 및 시설 안내</h2>
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div class="divider-leaf"><i class="fa-solid fa-kaaba"></i></div>
+          <div class="divider-line"></div>
+        </div>
+        <p>스님의 정성 어린 기도 공간부터 편안한 휴식과 차 한 잔을 나누는 쉼터까지, 소원사의 주요 전각과 편의 시설을 소개합니다.</p>
+      </div>
+
+      <div class="facilities-grid">
+        <!-- 시설 1: 대웅전 (큰법당) -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/sowonsa_daewoongjeon_altar.jpg" alt="소원사 대웅전 큰법당 삼존불">
+            <span class="facility-badge serif">대웅전 (큰법당)</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-dharmachakra"></i> 대웅전 (큰법당)</h4>
+            <p>석가모니 주불과 황금 삼존불이 모셔진 도량의 중심 법당입니다. 365일 지극한 아침·저녁 조석 예불과 소원성취 축원 기도가 엄숙히 봉행되는 장엄한 기도 공간입니다.</p>
+          </div>
+        </div>
+
+        <!-- 시설 2: 야외 도량 & 황금보살길 -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/sowonsa_golden_buddha_path.jpg" alt="소원사 황금 관세음보살길과 전경">
+            <span class="facility-badge serif">황금보살길 & 잔디마당</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-hands-praying"></i> 야외 도량 & 황금보살길</h4>
+            <p>초록빛 잔디와 고즈넉한 돌담길을 따라 자비로운 황금 관세음보살상과 미소 띤 포대화상, 황금 와불상이 봉안되어 있어 참배객들에게 맑은 힐링과 산책의 평온을 선사합니다.</p>
+          </div>
+        </div>
+
+        <!-- 시설 3: 청정 위패전 (추모관) -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/wipae_enshrinement.jpg" alt="소원사 청정 위패전 봉안당">
+            <span class="facility-badge serif">청정 위패전 (추모관)</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-monument"></i> 청정 위패전 (영구 봉안당)</h4>
+            <p>최첨단 항온·항습 시스템이 완비되어 습기나 훼손 걱정이 전혀 없는 현대식 봉안 시설입니다. 부모님과 가문 조상 영가님들을 영구히 품격 있게 안치하여 관리합니다.</p>
+          </div>
+        </div>
+
+        <!-- 시설 4: 종무소 및 다실 (상담 쉼터) -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/20260719_141626.jpg" alt="소원사 종무소 및 창가 다실">
+            <span class="facility-badge serif">종무소 & 다실</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-mug-hot"></i> 종무소 및 차 한 잔의 다실</h4>
+            <p>창밖으로 싱그러운 한라산 숲이 내다보이는 정갈한 사찰 행정 및 상담 공간입니다. 방문객 누구나 따뜻한 차 한 잔과 함께 편안하게 기도 및 위패 상담을 받으실 수 있습니다.</p>
+          </div>
+        </div>
+
+        <!-- 시설 5: 공양간 (사찰 식당) & 야외 쉼터 -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/260820-02.jpg" alt="소원사 야외 쉼터와 참배객 휴식 공간">
+            <span class="facility-badge serif">공양간 & 야외 쉼터</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-bowl-rice"></i> 공양간 & 사찰 쉼터</h4>
+            <p>사찰을 찾아오신 신도와 참배객들이 정갈하고 따뜻한 사찰 공양을 함께 나누고, 시원한 그늘 아래서 자연의 바람을 맞으며 담소를 나눌 수 있는 넉넉한 휴식처입니다.</p>
+          </div>
+        </div>
+
+        <!-- 시설 6: 범종각 & 일주문 -->
+        <div class="facility-card reveal">
+          <div class="facility-img-wrap">
+            <img src="./images/260820-03.jpg" alt="소원사 범종각 전경">
+            <span class="facility-badge serif">범종각 & 일주문</span>
+          </div>
+          <div class="facility-info">
+            <h4 class="serif"><i class="fa-solid fa-bell"></i> 소원사 범종각 & 일주문</h4>
+            <p>사찰의 입구에서 장엄함을 더하는 황금빛 범종각입니다. 은은하게 울려 퍼지는 맑은 종소리가 사바세계의 모든 고통을 씻어내고 온 누리에 부처님의 자비를 전합니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
