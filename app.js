@@ -1,6 +1,6 @@
 // Media Database
 const mediaItems = [
-  { type: 'youtube', src: 'd95C6igVm8w', category: 'video', title: '[제주 소원사] 제주에서 부모님과 소중한 인연을 평안으로 잇는 곳' },
+  { type: 'youtube', src: 'xP6QFIcN0FA', category: 'video', title: '지친 마음이 머무는 곳, 한라산 맑은 정기 아래 청정 도량 | 제주 소원사' },
   { type: 'youtube', src: 'NHRurTO3NJY', category: 'video', title: '백록이 내린 기적의 절, 제주 소원사' },
   { type: 'youtube', src: 'KfbxbXhMCRg', category: 'video', title: '제주 소원사, 천년의 노래' },
   { type: 'image', src: '260820-01.jpg', category: 'scenery', title: '황금 포대화상과 현대식 법당 전경' },
