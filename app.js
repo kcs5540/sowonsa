@@ -3,6 +3,7 @@ const mediaItems = [
   { type: 'youtube', src: '6SV3IqXhvKY', category: 'video', isShorts: true, title: '마음이 지치고 복잡할 때 꼭 가봐야 할 곳 | 제주 소원사 #shorts' },
   { type: 'youtube', src: 'Y5Pes5SDt98', category: 'video', isShorts: true, title: '명절 제사 걱정 없이 평안을 모시는 법 | 제주 소원사 #shorts' },
   { type: 'youtube', src: 'GTPRvxd3dxw', category: 'video', isShorts: true, title: '명절마다 마음에 걸렸던 조상님 묘소, 이렇게 모셨습니다 | 제주 소원사 #shorts' },
+  { type: 'youtube', src: 'BgiEwOH0Oc8', category: 'video', title: '마음이 편안해지는 노래, 제주 소원사의 사계 (MV) | 제주 소원사' },
   { type: 'youtube', src: 'xP6QFIcN0FA', category: 'video', title: '지친 마음이 머무는 곳, 한라산 맑은 정기 아래 청정 도량 | 제주 소원사' },
   { type: 'youtube', src: 'NHRurTO3NJY', category: 'video', title: '백록이 내린 기적의 절, 제주 소원사' },
   { type: 'youtube', src: 'KfbxbXhMCRg', category: 'video', title: '제주 소원사, 천년의 노래' },
