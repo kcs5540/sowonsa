@@ -1600,11 +1600,30 @@ section {
   background-color: #03C75A;
   color: #fff;
   border-color: #03C75A;
+  box-shadow: 0 4px 14px rgba(3, 199, 90, 0.25);
 }
 
 .action-btn.naver-btn:hover {
   background-color: #02b14f;
   border-color: #02b14f;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(3, 199, 90, 0.35);
+}
+
+.action-btn.youtube-btn {
+  background-color: #FF0000;
+  color: #ffffff;
+  border-color: #FF0000;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.25);
+}
+
+.action-btn.youtube-btn:hover {
+  background-color: #d90000;
+  border-color: #d90000;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.35);
 }
 
 .action-btn.kakao-btn {
@@ -1616,6 +1635,8 @@ section {
 .action-btn.kakao-btn:hover {
   background-color: #edd500;
   border-color: #edd500;
+  color: #3C1E1E;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 1024px) {
@@ -3260,5 +3281,19 @@ footer {
   background: var(--color-secondary);
   color: #081C17;
 }
+
+/* Location Actions Responsive Enhancements */
+@media (max-width: 640px) {
+  .location-actions {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .action-btn {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.92rem;
+  }
+}
+
 
 
