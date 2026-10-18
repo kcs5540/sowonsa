@@ -2115,6 +2115,76 @@ section {
   background-color: var(--bg-tertiary);
 }
 
+.map-naver-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.map-naver-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.65rem 1.15rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  border: 1.5px solid #03C75A;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.map-naver-link .naver-icon-sq {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background-color: #03C75A;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.82rem;
+  border-radius: 5px;
+}
+
+.map-naver-link .naver-badge-text strong {
+  color: #03C75A;
+  font-weight: 800;
+}
+
+.map-naver-link i {
+  font-size: 0.8rem;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.map-naver-link:hover {
+  background-color: #03C75A;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(3, 199, 90, 0.35);
+}
+
+.map-naver-link:hover .naver-icon-sq {
+  background-color: #ffffff;
+  color: #03C75A;
+}
+
+.map-naver-link:hover .naver-badge-text strong {
+  color: #ffffff;
+}
+
+.map-naver-link:hover i {
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
 /* Beautiful custom map placeholder */
 .map-placeholder {
   position: absolute;
@@ -3293,7 +3363,22 @@ footer {
     padding: 0.85rem 1.25rem;
     font-size: 0.92rem;
   }
+
+  .map-naver-badge {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .map-naver-link {
+    width: 100%;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
 }
+
 
 
 
