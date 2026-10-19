@@ -15,6 +15,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "introcard.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "proposal.html",
       "use": "@vercel/static"
     },
@@ -55,6 +59,10 @@
     {
       "src": "/partner-guide",
       "dest": "partner-guide.html"
+    },
+    {
+      "src": "/introcard",
+      "dest": "introcard.html"
     },
     {
       "src": "/(.*)",
