@@ -614,67 +614,22 @@
     <div id="toast">주소가 복사되었습니다. 카톡에 붙여넣어 공유하세요!</div>
   </div>
 
-  <!-- Kakao JavaScript SDK -->
-  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
-
   <script>
-    // 카카오 SDK 초기화 시도 (키 미설정 시 Web Share / 클립보드 폴백)
-    var KAKAO_KEY = 'e57723933010b91e70e285d8e752be35'; // 공개 카카오 키 적용
-    try {
-      if (window.Kakao && !window.Kakao.isInitialized()) {
-        window.Kakao.init(KAKAO_KEY);
-      }
-    } catch(e) {
-      console.log('Kakao SDK init note:', e);
-    }
-
     // 카카오톡 공유 및 링크 복사 기능
     function shareCurrentPage() {
-      if (window.Kakao && window.Kakao.isInitialized()) {
-        try {
-          window.Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-              title: '제주 소원사 | 간절한 한 가지 소원이 이루어지는 도량',
-              description: '한라산 청정 자연 속, 가족의 건강과 조상님의 안식을 발원하는 제주 소원사 모바일 안내장입니다.',
-              imageUrl: 'https://sowonsa.vercel.app/images/sowonsa_real_cover_path.png',
-              link: {
-                mobileWebUrl: window.location.href,
-                webUrl: window.location.href,
-              },
-            },
-            buttons: [
-              {
-                title: '도량 안내장 보기',
-                link: {
-                  mobileWebUrl: window.location.href,
-                  webUrl: window.location.href,
-                },
-              },
-              {
-                title: '전화 상담 문의',
-                link: {
-                  mobileWebUrl: 'tel:064-805-2007',
-                  webUrl: 'tel:064-805-2007',
-                },
-              },
-            ],
-          });
-          return;
-        } catch(err) {
-          console.warn('Kakao Share fallback:', err);
-        }
-      }
-
+      // 1. 모바일 브라우저(크롬, 사파리, 삼성인터넷 등)에서 카카오톡 등 앱으로 즉시 공유
       if (navigator.share) {
         navigator.share({
           title: '제주 소원사 | 간절한 한 가지 소원이 이루어지는 도량',
-          text: '한라산 능선 아래 청정 자연 속, 가족의 건강과 행복을 발원하는 제주 소원사 소식입니다.',
-          url: window.location.href
-        }).catch(function() {
-          copyToClipboard();
+          text: '한라산 청정 자연 속, 가족의 건강과 조상님의 안식을 발원하는 제주 소원사 모바일 안내장입니다.\nhttps://sowonsa.vercel.app/introcard',
+          url: 'https://sowonsa.vercel.app/introcard'
+        }).catch(function(err) {
+          if (err.name !== 'AbortError') {
+            copyToClipboard();
+          }
         });
       } else {
+        // 2. PC 등 미지원 환경에서는 원클릭 주소 복사 + 토스트 안내
         copyToClipboard();
       }
     }
