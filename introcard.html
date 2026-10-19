@@ -240,11 +240,31 @@
       background: #ffffff;
       border: 1px solid #e9e5de;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* 마우스 커서 호버 시 역동적이고 부드러운 반응 */
+    .link-btn:hover {
+      transform: translateY(-3px) scale(1.015);
+      border-color: #d1c7b8;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+    }
+
+    .link-btn:hover .link-arrow {
+      transform: translateX(4px);
+      color: var(--primary-gold);
+    }
+
+    .link-btn:hover .link-icon-box {
+      transform: scale(1.1) rotate(-3deg);
     }
 
     .link-btn:active {
-      transform: scale(0.98);
+      transform: translateY(0) scale(0.98);
       background: #faf8f5;
     }
 
@@ -263,6 +283,7 @@
       justify-content: center;
       font-size: 17px;
       flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
     .link-text-wrap {
@@ -301,6 +322,7 @@
     .link-arrow {
       color: #bfb8ab;
       font-size: 13px;
+      transition: transform 0.25s ease, color 0.25s ease;
     }
 
     /* 각 버튼별 세련된 포인트 컬러 (배경은 깔끔한 화이트톤 베이스) */
@@ -726,6 +748,30 @@
         toast.className = toast.className.replace("show", "");
       }, 2500);
     }
+
+    // 마우스 커서 위치에 따른 실시간 3D 인터랙티브 반응
+    document.querySelectorAll('.link-btn').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left; // 마우스 X좌표
+        var y = e.clientY - rect.top;  // 마우스 Y좌표
+        
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        
+        // 커서 위치에 따른 회전각 계산 (-5도 ~ +5도)
+        var rotateX = ((y - centerY) / centerY) * -5;
+        var rotateY = ((x - centerX) / centerX) * 5;
+
+        card.style.transform = 'perspective(600px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-3px) scale(1.02)';
+        card.style.boxShadow = (x - centerX) * 0.15 + 'px ' + (y - centerY) * 0.2 + 'px 20px rgba(0, 0, 0, 0.08)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
   </script>
 </body>
 </html>
