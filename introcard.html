@@ -223,84 +223,107 @@
       gap: 12px;
     }
 
+    /* 모던 프리미엄 링크 리스트 디자인 */
+    .action-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .link-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 18px;
+      padding: 14px 16px;
       border-radius: 14px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
+      background: #ffffff;
+      border: 1px solid #e9e5de;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
       transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
 
     .link-btn:active {
       transform: scale(0.98);
+      background: #faf8f5;
     }
 
     .link-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
     }
 
-    .link-left i {
-      font-size: 20px;
-      width: 24px;
-      text-align: center;
+    .link-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .link-text-wrap {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .link-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #24221e;
+      line-height: 1.35;
+    }
+
+    .link-sub {
+      font-size: 11.5px;
+      color: #8c867a;
+      margin-top: 2px;
+    }
+
+    .link-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .link-badge {
       font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 10px;
-      margin-left: 6px;
-      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
     }
 
-    /* 1. 공식 홈페이지 */
-    .btn-home {
-      background: linear-gradient(135deg, #a67c17 0%, #c59b27 100%);
-      color: #ffffff;
-    }
-    .btn-home .link-badge {
-      background: rgba(255, 255, 255, 0.25);
-      color: #fff;
+    .link-arrow {
+      color: #bfb8ab;
+      font-size: 13px;
     }
 
-    /* 2. 공식 유튜브 */
-    .btn-youtube {
-      background: #fdf5f5;
-      color: #cc0000;
-      border: 1px solid #fedede;
-    }
-    .btn-youtube .link-badge {
-      background: #fde6e6;
-      color: #e50914;
-    }
+    /* 각 버튼별 세련된 포인트 컬러 (배경은 깔끔한 화이트톤 베이스) */
+    .theme-gold .link-icon-box { background: #fdf6e6; color: #b38515; }
+    .theme-gold .link-badge { background: #fdf3d8; color: #9c720e; }
 
-    /* 3. 네이버 길찾기 */
-    .btn-map {
-      background: #f1f9f2;
-      color: #03a84e;
-      border: 1px solid #d4eedb;
-    }
-    .btn-map .link-badge {
-      background: #ddf4e3;
-      color: #029443;
-    }
+    .theme-brown .link-icon-box { background: #f7f3ee; color: #786249; }
+    .theme-brown .link-badge { background: #efeae2; color: #69533a; }
 
-    /* 4. 종무소 전화상담 */
-    .btn-call {
-      background: #f3f6fb;
-      color: #2b5ea7;
-      border: 1px solid #d9e5f5;
-    }
-    .btn-call .link-badge {
-      background: #dbe8fa;
-      color: #215197;
+    .theme-red .link-icon-box { background: #fdf0f0; color: #d93838; }
+    .theme-red .link-badge { background: #fde8e8; color: #c42929; }
+
+    .theme-green .link-icon-box { background: #eef8f2; color: #029443; }
+    .theme-green .link-badge { background: #e2f5e9; color: #027d39; }
+
+    .theme-blue .link-icon-box { background: #f0f4fa; color: #2e62ad; }
+    .theme-blue .link-badge { background: #e5edfa; color: #1f5096; }
+
+    .theme-darkgreen .link-icon-box { background: #e9f5ed; color: #106b32; }
+    .theme-darkgreen .link-badge { background: #d7eedf; color: #0d5829; }
+    .theme-highlight {
+      border: 1.5px solid #d4eedb;
+      background: #fbfdfc;
     }
 
     /* 간편 상담/기도 신청 폼 섹션 */
@@ -547,75 +570,105 @@
 
         <div class="action-links">
           <!-- 1. 공식 홈페이지 -->
-          <a href="https://sowonsa.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-btn btn-home">
+          <a href="https://sowonsa.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-btn theme-gold">
             <div class="link-left">
-              <i class="fa-solid fa-globe"></i>
-              <div>
-                <span>소원사 공식 홈페이지</span>
-                <span class="link-badge">바로가기</span>
+              <div class="link-icon-box">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title">소원사 공식 홈페이지</span>
+                <span class="link-sub">도량 소개와 시설 한눈에 보기</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">바로가기</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
 
           <!-- 2. 온라인 팜플렛 안내 -->
-          <a href="/pamphlet" target="_blank" rel="noopener noreferrer" class="link-btn" style="background: #faf4e6; color: #8e6d15; border: 1px solid #ebd9b5;">
+          <a href="/pamphlet" target="_blank" rel="noopener noreferrer" class="link-btn theme-brown">
             <div class="link-left">
-              <i class="fa-solid fa-book-open"></i>
-              <div>
-                <span>소원사 팜플렛 보기</span>
-                <span class="link-badge" style="background: #eddcb9; color: #6a4f08;">위패/도량안내</span>
+              <div class="link-icon-box">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title">소원사 모바일 팜플렛</span>
+                <span class="link-sub">안심 위패 봉안 및 도량 안내서</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">팜플렛</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
 
           <!-- 3. 유튜브 채널 -->
-          <a href="https://www.youtube.com/@jejusowonsa" target="_blank" rel="noopener noreferrer" class="link-btn btn-youtube">
+          <a href="https://www.youtube.com/@jejusowonsa" target="_blank" rel="noopener noreferrer" class="link-btn theme-red">
             <div class="link-left">
-              <i class="fa-brands fa-youtube"></i>
-              <div>
-                <span>소원사 공식 유튜브</span>
-                <span class="link-badge">도량영상</span>
+              <div class="link-icon-box">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title">소원사 공식 유튜브</span>
+                <span class="link-sub">사계절 도량 풍경과 예불 영상</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">영상보기</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
 
-          <!-- 3. 네이버 지도 길찾기 -->
-          <a href="https://naver.me/GTncELsO" target="_blank" rel="noopener noreferrer" class="link-btn btn-map">
+          <!-- 4. 네이버 지도 길찾기 -->
+          <a href="https://naver.me/GTncELsO" target="_blank" rel="noopener noreferrer" class="link-btn theme-green">
             <div class="link-left">
-              <i class="fa-solid fa-map-location-dot"></i>
-              <div>
-                <span>네이버 지도 길찾기</span>
-                <span class="link-badge">방문안내</span>
+              <div class="link-icon-box">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title">네이버 지도 길찾기</span>
+                <span class="link-sub">제주시 오등동 도량 찾아오시는 길</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">길안내</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
 
-          <!-- 4. 종무소 전화 상담 -->
-          <a href="tel:064-805-2007" class="link-btn btn-call">
+          <!-- 5. 종무소 일반 전화 -->
+          <a href="tel:064-805-2007" class="link-btn theme-blue">
             <div class="link-left">
-              <i class="fa-solid fa-phone-volume"></i>
-              <div>
-                <span>종무소 일반 전화</span>
-                <span class="link-badge">064-805-2007</span>
+              <div class="link-icon-box">
+                <i class="fa-solid fa-phone-volume"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title">종무소 일반 전화</span>
+                <span class="link-sub">064-805-2007 (방문·상담 문의)</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">통화연결</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
 
-          <!-- 5. 직통 휴대폰 상담 (신규 추가) -->
-          <a href="tel:010-4912-1083" class="link-btn" style="background: #eef7f2; color: #1e7044; border: 1px solid #c7ebd4;">
+          <!-- 6. 직통 휴대폰 상담 -->
+          <a href="tel:010-4912-1083" class="link-btn theme-darkgreen theme-highlight">
             <div class="link-left">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-              <div>
-                <span>소원사 직통 휴대폰</span>
-                <span class="link-badge" style="background: #c7ebd4; color: #135c34;">010-4912-1083</span>
+              <div class="link-icon-box">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-title" style="color: #0d5829;">소원사 직통 휴대폰</span>
+                <span class="link-sub" style="color: #1b7a3d;">010-4912-1083 (언제든 빠른 상담)</span>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
+            <div class="link-right">
+              <span class="link-badge">직통상담</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
           </a>
         </div>
       </section>
