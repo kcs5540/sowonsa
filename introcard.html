@@ -365,6 +365,49 @@
 
 
 
+    /* 모바일 법당 소원등 켜기 특별 버튼 (다크 골드 프리미엄) */
+    .link-btn.theme-sowonpray {
+      background: linear-gradient(135deg, #221e1a 0%, #161311 100%);
+      border: 1.5px solid #c59b27;
+      box-shadow: 0 4px 16px rgba(197, 155, 39, 0.25);
+    }
+    .link-btn.theme-sowonpray:hover {
+      background: linear-gradient(135deg, #2a2520 0%, #1c1815 100%);
+      border-color: #f5d061;
+      box-shadow: 0 6px 22px rgba(245, 208, 97, 0.35);
+      transform: translateY(-3px) scale(1.015);
+    }
+    .link-btn.theme-sowonpray .link-icon-box {
+      background: #2b251e;
+      border: 1px solid rgba(245, 208, 97, 0.4);
+      color: #f5d061;
+      box-shadow: 0 0 10px rgba(245, 208, 97, 0.2);
+    }
+    .link-btn.theme-sowonpray .link-title {
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .link-btn.theme-sowonpray .link-sub {
+      color: #f5d061 !important;
+      font-weight: 700;
+      font-size: 11.5px;
+      letter-spacing: 0.02em;
+    }
+    .link-btn.theme-sowonpray .link-badge {
+      background: rgba(197, 155, 39, 0.25);
+      color: #f5d061;
+      border: 1px solid rgba(245, 208, 97, 0.4);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+    .link-btn.theme-sowonpray .link-arrow {
+      color: #f5d061;
+    }
+
     /* 푸터 */
     footer {
       text-align: center;
@@ -534,6 +577,25 @@
           <i class="fa-solid fa-mobile-screen-button" style="font-size: 16px;"></i>
           <span>방문 예약 및 식사 문의 (010-4912-1083)</span>
         </a>
+
+        <!-- [신규] 모바일 법당 대웅전 무료 축원: 소원등 켜기 특별 배너 -->
+        <a href="https://sowonpray.vercel.app/" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #221e1a 0%, #161311 100%); border: 1.5px solid #c59b27; border-radius: 12px; padding: 13px 16px; margin-top: 10px; text-decoration: none; box-shadow: 0 4px 16px rgba(197, 155, 39, 0.28); transition: all 0.25s ease;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 42px; height: 42px; border-radius: 11px; background: #2b251e; border: 1px solid rgba(245, 208, 97, 0.45); display: flex; align-items: center; justify-content: center; color: #f5d061; box-shadow: 0 0 10px rgba(245, 208, 97, 0.25); flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5d061" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"/>
+              </svg>
+            </div>
+            <div style="display: flex; flex-direction: column; text-align: left;">
+              <span style="color: #f5d061; font-weight: 700; font-size: 11px; letter-spacing: 0.02em;">대웅전 무료 축원</span>
+              <span style="color: #ffffff; font-weight: 800; font-size: 16px; letter-spacing: -0.02em;">소원등 켜기</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="background: rgba(197, 155, 39, 0.25); color: #f5d061; border: 1px solid rgba(245, 208, 97, 0.4); font-size: 10.5px; padding: 3px 8px; border-radius: 20px; font-weight: 700;">모바일 법당</span>
+            <i class="fa-solid fa-chevron-right" style="color: #f5d061; font-size: 12px;"></i>
+          </div>
+        </a>
       </section>
 
       <!-- 소원사 공식 안내 링크 (요청사항: 하단 위치) -->
@@ -544,6 +606,25 @@
         </div>
 
         <div class="action-links">
+          <!-- 0. [신규] 모바일 법당 소원등 켜기 (대웅전 무료 축원) -->
+          <a href="https://sowonpray.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-btn theme-sowonpray">
+            <div class="link-left">
+              <div class="link-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5d061" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"/>
+                </svg>
+              </div>
+              <div class="link-text-wrap">
+                <span class="link-sub">대웅전 무료 축원</span>
+                <span class="link-title">소원등 켜기</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="link-badge">모바일 법당</span>
+              <i class="fa-solid fa-chevron-right link-arrow"></i>
+            </div>
+          </a>
+
           <!-- 1. 소원사 공식 홈페이지 (전체 도량 및 소개 파악) -->
           <a href="https://sowonsa.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-btn theme-gold">
             <div class="link-left">
