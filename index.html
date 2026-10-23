@@ -19,7 +19,7 @@
 
   <!-- Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20261024_icon_align_top">
+  <link rel="stylesheet" href="style.css?v=20261024_streamline_enshrine">
 </head>
 <body>
 
@@ -429,7 +429,7 @@
               <li><i class="fa-solid fa-circle-check"></i> 단 한 번의 동참으로 사후 영구 위패 자동 승계/전환</li>
             </ul>
           </div>
-          <button class="compare-card-btn" onclick="switchEnshrineTab('tab-yesujae')">생전 예수재 상세안내 보기 <i class="fas fa-arrow-down"></i></button>
+          <button class="compare-card-btn" onclick="scrollToConsultForm('생전예수재')">생전 예수재 상담 신청하기 <i class="fas fa-arrow-down"></i></button>
         </div>
 
         <!-- 위패봉안 카드 -->
@@ -444,7 +444,7 @@
               <li><i class="fa-solid fa-circle-check"></i> 스님이 직접 올리는 365일 아침·저녁 매일 예불</li>
             </ul>
           </div>
-          <button class="compare-card-btn" onclick="switchEnshrineTab('tab-enshrine')">위패봉안 상세안내 보기 <i class="fas fa-arrow-down"></i></button>
+          <button class="compare-card-btn" onclick="scrollToConsultForm('위패봉안')">영가 위패봉안 상담 신청하기 <i class="fas fa-arrow-down"></i></button>
         </div>
       </div>
 
@@ -473,77 +473,11 @@
         <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1.5rem; font-style: italic;">※ 이미 돌아가신 영가를 모시는 '영가 위패봉안'은 생전 예수재 단계를 거치지 않고 사후 위패전으로 즉시 안치되는 별개의 독립된 서비스입니다.</p>
       </div>
 
-      <!-- 탭 레이아웃 및 폼 그리드 -->
-      <div class="enshrine-grid">
-        <div class="enshrine-info-cards reveal">
-          <div class="enshrine-tabs-container">
-            <div class="enshrine-tabs">
-              <button class="tab-trigger active" id="trigger-yesujae" onclick="switchEnshrineTab('tab-yesujae')">생전 예수재 상세</button>
-              <button class="tab-trigger" id="trigger-enshrine" onclick="switchEnshrineTab('tab-enshrine')">영가 위패봉안 상세</button>
-            </div>
-
-            <!-- 생전예수재 탭 패널 -->
-            <div class="tab-panel active" id="tab-yesujae">
-              <div style="display: flex; flex-direction: column; gap: 2rem;">
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-sun"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">살아생전 스스로 닦는 최고의 공덕</h4>
-                    <p>사후에 남겨진 후손들이 정성껏 올리는 백 번의 천도재보다, 살아생전 맑은 정신과 온전한 육신을 지녔을 때 본인의 손으로 직접 죄업을 참회하고 닦는 예수재 법회의 공덕이 수십 배 더 크고 지극합니다.</p>
-                  </div>
-                </div>
-
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">부담을 남기지 않는 자비의 실천</h4>
-                    <p>사후에 자녀들에게 고액의 봉안 비용이나 관리 및 기제사 봉행에 관한 심리적·금전적 짐을 남기지 않고, 부모 본인이 살아생전 주체적이고 품격 있게 자신의 사후 안식을 마련하는 아름답고 자비로운 매듭입니다.</p>
-                  </div>
-                </div>
-
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">여생의 무병장수와 가문 액운 소멸</h4>
-                    <p>생전 예수재는 단순히 미래의 죽음만을 준비하는 소극적인 의례가 아닙니다. 전생과 현생에 알게 모르게 지은 죄의 빚을 씻어내어 남은 삶을 질병 없이 건강하게 보내고, 집안의 악업을 소멸하여 자손 창성을 기원합니다.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 위패봉안 탭 패널 -->
-            <div class="tab-panel" id="tab-enshrine">
-              <div style="display: flex; flex-direction: column; gap: 2rem;">
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-om"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">영구 안심 봉안 및 1,000기 한정 접수</h4>
-                    <p>세속의 집착을 내려놓고 아미타 부처님의 품에서 왕생하시기를 바라는 지극한 효심의 실천입니다. 대를 이어 명당에서 조상님을 모실 수 있도록 <strong>평생 동안 품격 있고 안심할 수 있는 관리</strong>를 약속드립니다. 총 2,000기 명당 중 잔여 1,000기 한정으로 특별히 모십니다.</p>
-                  </div>
-                </div>
-
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-hands-praying"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">스님이 직접 모시는 365일 예불 및 연 15회 제사</h4>
-                    <p>주지 스님과 대중 스님이 매일 아침·저녁 365일 거르지 않고 영가의 위패 앞에 향을 피우고 이름을 부르며 극락왕생 축원을 올립니다. 자손이 직접 오지 못하더라도 사찰에서 설·추석 차례(연 2회), 백중 영가 대재(연 1회), 매월 음력 18일 지장재일 정기 제례(연 12회) 등 <strong>연간 15회 이상의 체계적인 제사</strong>를 성심껏 봉행합니다.</p>
-                  </div>
-                </div>
-
-                <div class="enshrine-card">
-                  <div class="enshrine-card-icon"><i class="fa-solid fa-hotel"></i></div>
-                  <div class="enshrine-card-content">
-                    <h4 class="serif">기일 단독 제사 대행 및 청정 위패전</h4>
-                    <p>기제사는 희망하시는 경우 <strong>기일 당일에 영가 단독 특별 제사</strong>로 정성껏 올릴 수 있습니다. (※ 제수 음식 비용 20만 원 별도 추가) 또한 가문의 사정에 맞춘 49재, 백일재, 파묘 이장재 대행이 가능하며, 최첨단 항온·항습 설비가 완비된 위패전에서 소중히 보존합니다.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 상담 신청 폼 -->
-        <div class="enshrine-form-container reveal">
+      <!-- 안심 봉안 간편 상담 신청 폼 -->
+      <div class="enshrine-form-wrapper reveal">
+        <div class="enshrine-form-container">
+          <div class="form-header-badge serif">무료 전화 상담 · 방문 예약 안내</div>
+          
           <h4 class="serif form-title"><i class="fa-solid fa-circle-info"></i> 안심 봉안 간편 상담 신청</h4>
           <p class="form-subtitle">문의사항을 남겨주시면 안내 법사님이 확인 후 신속하게 전화를 드립니다.</p>
           <form id="consultation-form" class="consultation-form-element">
@@ -577,6 +511,7 @@
               <i class="fa-solid fa-paper-plane"></i> 상담 신청하기
             </button>
           </form>
+        
         </div>
       </div>
 

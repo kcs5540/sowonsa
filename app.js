@@ -555,43 +555,31 @@ function initConsultations() {
   handleFormSubmit('modal-consultation-form');
 }
 
-// 10. Dual-track Enshrines & Yesu-jae Tab Switcher
-window.switchEnshrineTab = function(tabId) {
-  const triggers = document.querySelectorAll('.tab-trigger');
-  const panels = document.querySelectorAll('.tab-panel');
+// 10. Enshrines & Yesu-jae Smooth Form Scroll
+window.scrollToConsultForm = function(enshrineType) {
+  const formElement = document.getElementById('consultation-form');
+  const typeSelect = document.getElementById('enshrine-type');
   
-  triggers.forEach(trigger => trigger.classList.remove('active'));
-  panels.forEach(panel => panel.classList.remove('active'));
-  
-  const activePanel = document.getElementById(tabId);
-  if (activePanel) {
-    activePanel.classList.add('active');
+  if (typeSelect && enshrineType) {
+    typeSelect.value = enshrineType;
   }
   
-  let triggerId = '';
-  if (tabId === 'tab-enshrine') {
-    triggerId = 'trigger-enshrine';
-  } else if (tabId === 'tab-yesujae') {
-    triggerId = 'trigger-yesujae';
-  }
-  
-  const activeTrigger = document.getElementById(triggerId);
-  if (activeTrigger) {
-    activeTrigger.classList.add('active');
-  }
-
-  // Smooth scroll to tab section
-  const tabContainer = document.querySelector('.enshrine-tabs-container');
-  if (tabContainer) {
+  if (formElement) {
     const header = document.querySelector('header');
     const headerHeight = header ? header.offsetHeight : 80;
-    const elementPosition = tabContainer.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - headerHeight - 20;
+    const elementPosition = formElement.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerHeight - 40;
 
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
     });
+
+    const nameInput = document.getElementById('caller-name');
+    if (nameInput) {
+      setTimeout(() => nameInput.focus(), 600);
+    }
   }
 };
+window.switchEnshrineTab = window.scrollToConsultForm;
 
