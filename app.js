@@ -135,16 +135,19 @@ function initTheme() {
 // 2. Header Scroll Effect
 function initHeaderScroll() {
   const header = document.querySelector('header');
+  if (!header) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.style.boxShadow = 'var(--shadow-md)';
+  const handleScroll = () => {
+    if (window.scrollY > 30) {
+      header.classList.add('scrolled');
     } else {
-      header.style.boxShadow = 'none';
+      header.classList.remove('scrolled');
     }
-    
     updateActiveNavLink();
-  });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 }
 
 // 3. Mobile Menu Toggle
