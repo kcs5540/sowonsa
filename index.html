@@ -68,10 +68,6 @@
         </nav>
 
       <div class="nav-actions">
-        <a href="https://sowonpray.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-temple-cta-btn" title="제주 소원사 모바일 법당 (온라인 소원등 · 위패 · 기도 신청)">
-          <i class="fa-solid fa-hands-praying"></i>
-          <span>모바일 법당</span>
-        </a>
         <a href="tel:064-805-2007" class="nav-phone-btn" title="종무소 전화 상담 (064-805-2007)" aria-label="종무소 전화 상담">
           <i class="fa-solid fa-phone"></i>
         </a>
@@ -757,10 +753,15 @@
   </footer>
 
   <!-- Floating Quick Consultation Button -->
-  <div class="floating-cta" id="floating-cta">
-    <button class="floating-cta-btn" id="open-consult-modal">
+  <div class="floating-cta-group" id="floating-cta">
+    <a href="https://sowonpray.vercel.app/" target="_blank" rel="noopener noreferrer" class="floating-cta-btn floating-btn-temple" title="온라인 소원등 켜기 · 사경 · 불사 신청 (새 창 열림)">
       <i class="fa-solid fa-hands-praying"></i>
-      <span>평생 안심 봉안 상담</span>
+      <span>모바일 법당</span>
+      <span class="floating-pulse-badge">ON</span>
+    </a>
+    <button type="button" class="floating-cta-btn floating-btn-consult" id="open-consult-modal" title="평생 안심 봉안 전화/방문 상담 예약">
+      <i class="fa-solid fa-hands-praying"></i>
+      <span>봉안 상담</span>
     </button>
   </div>
 
