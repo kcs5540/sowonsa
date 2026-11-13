@@ -181,7 +181,7 @@ function initMobileMenu() {
   });
 }
 
-// 4. Hero Background Slider (웹 최적화 경량 이미지 & 브라우저 프리로드 & 부드러운 크로스페이드)
+// 4. Hero Background Slider (크로스페이드 겹침 전환)
 function initHeroSlider() {
   const slider = document.getElementById('hero-slider');
   if (!slider) return;
@@ -210,9 +210,17 @@ function initHeroSlider() {
   if (slides.length <= 1) return;
 
   setInterval(() => {
-    slides[currentSlide].classList.remove('active');
+    const prevSlide = slides[currentSlide];
     currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
+    const nextSlide = slides[currentSlide];
+    
+    // 다음 슬라이드를 위로 올려 서서히 페이드인
+    nextSlide.classList.add('active');
+    
+    // 전환 완료(2초) 후 이전 슬라이드 active 해제하여 뒤로 배치
+    setTimeout(() => {
+      prevSlide.classList.remove('active');
+    }, 2000);
   }, 7000);
 }
 
