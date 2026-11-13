@@ -181,15 +181,23 @@ function initMobileMenu() {
   });
 }
 
-// 4. Hero Background Slider
+// 4. Hero Background Slider (웹 최적화 경량 이미지 & 브라우저 프리로드 & 부드러운 크로스페이드)
 function initHeroSlider() {
   const slider = document.getElementById('hero-slider');
+  if (!slider) return;
+
   const slideImages = [
-    'og_thumbnail.jpg', // Temple Balcony with Golden Railing (New Hero background)
-    '20260719_141517.jpg', // Pavilion with Hallasan
-    '20260719_135127.jpg'  // Main Hall
+    'hero_slide_balcony.jpg',  // 사찰 누각 황금 난간 전경 (메인 커버)
+    'hero_slide_pavilion.jpg', // 한라산 능선과 전통 부연정자
+    'hero_slide_mainhall.jpg'  // 소원사 대웅전 전경
   ];
   
+  // 브라우저 백그라운드 이미지 사전 캐싱(Preload)
+  slideImages.forEach(img => {
+    const pre = new Image();
+    pre.src = `./images/${img}`;
+  });
+
   slideImages.forEach((img, index) => {
     const slide = document.createElement('div');
     slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
@@ -198,13 +206,14 @@ function initHeroSlider() {
   });
   
   let currentSlide = 0;
-  const slides = document.querySelectorAll('.hero-slide');
-  
+  const slides = slider.querySelectorAll('.hero-slide');
+  if (slides.length <= 1) return;
+
   setInterval(() => {
     slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add('active');
-  }, 6000);
+  }, 7000);
 }
 
 // 5. Dynamic Gallery Logic
