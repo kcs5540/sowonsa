@@ -507,20 +507,25 @@ header.scrolled .nav-container {
 .hero-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
+  width: 255px;
+  height: 56px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
-  padding: 1.1rem 2.8rem;
   border-radius: 50px;
   font-weight: 500;
   font-size: 0.95rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   border: 1px solid var(--color-secondary);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.4s var(--transition-bezier);
   animation: fadeInUp 1.6s var(--transition-bezier);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
 .hero-cta:hover {
