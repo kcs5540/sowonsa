@@ -1,9 +1,11 @@
 // Media Database
 const mediaItems = [
+  { type: 'youtube', src: 'GTPRvxd3dxw', category: 'video', isShorts: true, title: '명절마다 마음에 걸렸던 조상님 묘소, 이렇게 모셨습니다 | 제주 소원사 #shorts' },
+  { type: 'youtube', src: 'ADv7tJ2d_a4', category: 'video', isShorts: true, title: '비행기 안 타도 됩니다! 내 손안에 열린 제주소원사 모바일 법당 🙏 #shorts' },
+  { type: 'youtube', src: 'ZD61tdRDsGw', category: 'video', isShorts: true, title: '스마트폰 켰더니 진짜 대웅전이?! 제주소원사 모바일 법당 등장 🪔 #shorts' },
   { type: 'youtube', src: 'jSQtqbB_JH8', category: 'video', title: '마음이 편안해지는 노래, 제주 소원사의 사계 (MV) | 제주 소원사' },
   { type: 'youtube', src: '6SV3IqXhvKY', category: 'video', isShorts: true, title: '마음이 지치고 복잡할 때 꼭 가봐야 할 곳 | 제주 소원사 #shorts' },
   { type: 'youtube', src: 'Y5Pes5SDt98', category: 'video', isShorts: true, title: '명절 제사 걱정 없이 평안을 모시는 법 | 제주 소원사 #shorts' },
-  { type: 'youtube', src: 'GTPRvxd3dxw', category: 'video', isShorts: true, title: '명절마다 마음에 걸렸던 조상님 묘소, 이렇게 모셨습니다 | 제주 소원사 #shorts' },
   { type: 'youtube', src: 'xP6QFIcN0FA', category: 'video', title: '지친 마음이 머무는 곳, 한라산 맑은 정기 아래 청정 도량 | 제주 소원사' },
   { type: 'youtube', src: 'KfbxbXhMCRg', category: 'video', title: '제주 소원사, 천년의 노래' },
   { type: 'image', src: '260820-01.jpg', category: 'scenery', title: '황금 포대화상과 현대식 법당 전경' },
