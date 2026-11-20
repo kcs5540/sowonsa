@@ -57,6 +57,10 @@
     {
       "src": "naver4a6c93073b761876265b107fcb9e7041.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "google09b1f826150402ac.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
