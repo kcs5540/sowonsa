@@ -1,0 +1,6 @@
+# 제주 소원사 공식홈페이지 robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sowonsa.vercel.app/sitemap.xml
